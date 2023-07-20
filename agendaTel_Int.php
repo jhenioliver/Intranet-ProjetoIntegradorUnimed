@@ -202,18 +202,21 @@
             <?php
             } else {
                 $pesquisa = $_GET['search'];
-                $sql_code_pesquisa =   "SELECT 
-                                            UPPER(U.NOME) AS NOME, 
-                                            UPPER(U.SOBRENOME) AS SOBRENOME,
-                                            UPPER(D.NOME_DEPARTAMENTO) AS SETOR,
-                                            U.CD_MATRICULA
-                                        FROM USUARIO U
-                                            JOIN DEPARTAMENTO D
-                                                ON U.CD_DEPARTAMENTO = D.CD_DEPARTAMENTO
-                                        WHERE NOME LIKE '%$pesquisa%'
-                                        OR SOBRENOME LIKE '%$pesquisa%'
-                                            ORDER BY NOME ASC
-                                            LIMIT 10";
+                $sql_code_pesquisa = "SELECT 
+                                        UPPER(U.NOME) AS NOME, 
+                                        UPPER(U.SOBRENOME) AS SOBRENOME,
+                                        UPPER(D.NOME_DEPARTAMENTO) AS SETOR,
+                                        IF(I.CD_TIPO_TELEFONE = 'R', I.NUM_TELEFONE, NULL) AS RAMAL
+                                    FROM USUARIO U
+                                        JOIN DEPARTAMENTO D
+                                        ON U.CD_DEPARTAMENTO = D.CD_DEPARTAMENTO
+                                        JOIN TELEFONE_INTERNO I
+                                        ON U.CD_MATRICULA = I.CD_MATRICULA
+                                    WHERE NOME LIKE '%$pesquisa%'
+                                    OR SOBRENOME LIKE '%$pesquisa%'
+                                    OR I.NUM_TELEFONE LIKE '%$pesquisa%'
+                                        ORDER BY NOME ASC
+                                        LIMIT 10";
                 
                 $sql_query_pesquisa = $conn->query($sql_code_pesquisa) or die("ERRO ao consultar! " . $conn->error);
                 
@@ -229,7 +232,7 @@
                             <tr class="linhaCorpo">
                             <td class="colunaCorpoSetor"><?php echo $dados['SETOR'] ?> </td>
                             <td class="colunaCorpoNome"><?php echo $dados['NOME'] . " " . $dados['SOBRENOME']; ?> </td>
-                            <td class="colunaCorpoRamal">RAMAL</td>
+                            <td class="colunaCorpoRamal"><?php echo $dados['RAMAL'] ?></td>
                             </tr>
                         <?php
                     }
