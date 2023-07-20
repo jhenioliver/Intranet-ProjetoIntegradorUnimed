@@ -202,11 +202,18 @@
             <?php
             } else {
                 $pesquisa = $_GET['search'];
-                $sql_code_pesquisa =   "SELECT UPPER(NOME) AS NOME, UPPER(SOBRENOME) AS SOBRENOME FROM USUARIO
+                $sql_code_pesquisa =   "SELECT 
+                                            UPPER(U.NOME) AS NOME, 
+                                            UPPER(U.SOBRENOME) AS SOBRENOME,
+                                            UPPER(D.NOME_DEPARTAMENTO) AS SETOR,
+                                            U.CD_MATRICULA
+                                        FROM USUARIO U
+                                            JOIN DEPARTAMENTO D
+                                                ON U.CD_DEPARTAMENTO = D.CD_DEPARTAMENTO
                                         WHERE NOME LIKE '%$pesquisa%'
                                         OR SOBRENOME LIKE '%$pesquisa%'
-                                        ORDER BY NOME ASC
-                                        LIMIT 10";
+                                            ORDER BY NOME ASC
+                                            LIMIT 10";
                 
                 $sql_query_pesquisa = $conn->query($sql_code_pesquisa) or die("ERRO ao consultar! " . $conn->error);
                 
@@ -220,7 +227,7 @@
                     while($dados = $sql_query_pesquisa->fetch_assoc()) {
                         ?>
                             <tr class="linhaCorpo">
-                            <td class="colunaCorpoSetor">SETOR</td>
+                            <td class="colunaCorpoSetor"><?php echo $dados['SETOR'] ?> </td>
                             <td class="colunaCorpoNome"><?php echo $dados['NOME'] . " " . $dados['SOBRENOME']; ?> </td>
                             <td class="colunaCorpoRamal">RAMAL</td>
                             </tr>
