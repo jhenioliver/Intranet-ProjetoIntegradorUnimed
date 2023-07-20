@@ -1,0 +1,278 @@
+/*Imports*/
+@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
+/*Gerais*/
+*{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* HEADER */
+.aniversariantesHeader{
+    width: 100%;
+    height: 200px;
+    background-image: url(img/headeraniver.jpeg);
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px #07532e;
+}
+.aniversariantesHeader img{
+    width: 100%;
+    height: 100%;
+}
+.voltarIntranet{
+    width: 20%;
+    height: 80%;
+    /* border: 1px solid black; */
+    margin-left: 30px;
+    
+}
+.voltarIntranet a{
+    height: 35px;
+    width: 160px;
+    font-size: 15px;
+
+    background-color: #00985D;
+    border: 1px solid #00524C;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    gap: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.voltarIntranet a img{
+    width: 19px;
+    height: 19px;
+    background-color: white;
+    border-radius: 50%;
+}
+.tituloAniversariantes{
+    width: 40%;
+    height: 80%;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+.infoHeaderAniversariantes{
+    width: 20%;
+    height: 80%;
+    margin-right: 30px;
+
+    text-align: center;
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;;
+}
+
+
+
+.conteudoAniversariantes{
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(136, 237, 255); */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 5px auto 0;
+    flex-wrap: wrap;
+}
+.txtAniversarianteSoMes{
+    width: 1020px;
+    height: 60px;
+    background-color: #00524C;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+.boxAniversariantesDoMes{
+    width: 1020px;
+    border: 2px solid #00524C;
+    border-radius: 7px;
+    color: black;
+
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+.linhasAniversariantes{
+    width: 97%;
+    height: 45px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.divisaoElementosAniversariantes{
+    background-color: #00524C;
+    height: 95%;
+    transform: rotate(50%);
+}
+.txtLista{
+    font-weight: bold;
+    color: black;
+}
+
+/* elementos linhas */
+.dataAnaiversario{
+    width: 15%;
+    height: 90%;
+    border: 1px solid #07532e;
+    background-image:linear-gradient(to left, #00524C, #00524C);
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dataAnaiversario p{
+    color: white;
+}
+.infoNomeColaboradorAniversario{
+    width: 50%;
+    height: 90%;
+    border: 1px solid #00524C;
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.infoSetorColaboradorAniversario{
+    width: 30%;
+    height: 90%;
+    border: 1px solid #00524C;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*-----===FOOTER===-----*/
+footer{
+    width: 100%;
+    background-color: white;
+    margin-top: 2px;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 0px;
+   
+    border-color: #00524C;
+}
+.footercenter{
+    height: 90px;
+    width: 55%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.localizacaoUnimed{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+.iconLocUnimed img{
+    width: 40px;
+    height: 40px;
+}
+.txtLocalizacao a p{
+    color: #00524C;
+}
+.boxContatos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    
+}
+.txtContatos{
+    text-align: center;
+    color: #00524C;
+    font-weight: bold;
+}
+.iconsContatos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+.iconsRedesSociais img{
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border-radius: 5px;
+}
+.iconsRedesSociais img:hover{
+    background-color: #00985D;
+    transition: all .3% ease-in-out;
+}
+.copyright{
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    border-top: 2px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 0px;
+    border-style: solid;
+    border-color: #CDDDDC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    flex-wrap: nowrap;
+    gap: 15px;
+}
+.copyright p{
+    color: #00524C;
+}

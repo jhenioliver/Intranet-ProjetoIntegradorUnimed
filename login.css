@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    background:url(img/fundoh.jpg) no-repeat;
+    max-width: 100%;
+    background-size: cover;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    max-width: 80vw;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.centerpage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 100vh;
+    max-width: 800px;
+}
+
+.formLogin {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 40px;
+    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+    gap: 5px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    min-width: 40%;
+}
+
+@media (max-width: 992px){
+    .formLogin{
+        min-width: 40%;
+    }
+}
+
+@media (max-width: 850px){
+    .formLogin{
+        width: auto;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 780px){
+    .formLogin{
+        border-radius: 20px;
+    }
+}
+
+.formLogin h1 {
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    font-size: 2.3em;
+}
+
+.formLogin p {
+    display: inline-block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.formLogin input {
+    padding: 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-radius: 4px;
+    transition: all linear 160ms;
+    outline: none;
+}
+
+.formLogin input:focus {
+    border: 1px solid #2a7713;
+}
+
+.formLogin label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.formLogin a {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #555;
+    transition: all linear 160ms;
+}
+
+.formLogin a:hover {
+    color: #2c7031;
+}
+
+.divPass {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+}
+
+.btn {
+    background-color: #2c7031;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none !important;
+    transition: all linear 160ms;
+    cursor: pointer;
+    margin: 0 !important;
+
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background-color: #338138;
+}
+
+.olho {
+    position: absolute;
+    width: 18px;
+    height: 12px;
+    top: 50%;
+    right: 10px;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+#senha {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.imghp {
+    max-width: 320px;
+    height: 380px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    max-width: 60%;
+}
+
+@media (max-width: 992px){
+    .imghp{
+        width: auto;
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 780px){
+    .imghp{
+        display: none
+    }
+}
