@@ -139,30 +139,14 @@
                 <div name="boxProcurarPor" id="" class="boxProcurarPor">
                     <div name="txtProcurarPor" id="" class="txtprocurar">Procurar Por:</div>
                         <input name="searchProcurarPor" id="searchProcurarPor" class="searchProcurarPor" type="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>"placeholder="Procurar Por">
-                        
-                            <script>
-                            var search = document.getElementById('searchProcurarPor');
-
-                            search.addEventListener("keydown", function(event) {
-                                if (event.key === "Enter") 
-                                {
-                                    searchData();
-                                }
-                            });
-
-                            function searchData()
-                            {
-                                window.location = 'agendaTel_Int.php?search='+search.value;
-                            }
-                            </script>
                     
                 </div>
 
                 <div name="boxProcurarSetor" id="" class="boxProcurarSetor">
                     <div name="txtProcurarSetor" id="" class="txtprocurar">Setor:</div>
 
-                    <select title="setor" name="setor" id="" class="selecioneSetor" placeholder="Setor">
-                        <option value="">SETOR</option>
+                    <select title="setor" name="setor" id="setor" class="selecioneSetor" placeholder="Setor">
+                        <option value="0">SETOR</option>
                         <?php
                         $sql_code_setor =  "SELECT * FROM DEPARTAMENTO 
                                             ORDER BY NOME_DEPARTAMENTO ASC";
@@ -172,6 +156,30 @@
                         <?php } ?>
                     </select>
                     
+                    <script>
+                        var search_pesquisa = document.getElementById('searchProcurarPor');
+
+                        search_pesquisa.addEventListener("keydown", function(event) {
+                            if (event.key === "Enter") 
+                            {
+                                searchPesquisa();
+                            }
+                        });
+
+                        var search_setor = document.getElementById('setor');
+
+                        search_setor.addEventListener("keydown", function(event) {
+                            if (event.key === "Enter") 
+                            {
+                                searchPesquisa();
+                            }
+                        });
+
+                        function searchPesquisa()
+                            {
+                                window.location = 'agendaTel_Int.php?search_pesquisa='+search_pesquisa.value+'&search_setor='+search_setor.value;
+                            }
+                     </script>
                 </div>
             </div>
             <div name="listaExelRamais" id="" class="listaExelRamais">
@@ -194,29 +202,27 @@
         <!-- corpo tabela -->
 
             <?php
-            if (empty($_GET['search'])) {
+            if (empty($_GET['search_pesquisa'])) {
                 ?>
             <tr class="linhaCorpo">
             <td class="linhaCorpo" colspan="3">Digite algo para pesquisar...</td>
             </tr>
             <?php
             } else {
-                $pesquisa = $_GET['search'];
+                $setor_pesquisa = $_GET['search_setor'];
+                $pesquisa = $_GET['search_pesquisa'];
                 $sql_code_pesquisa = "SELECT 
                                         UPPER(U.NOME) AS NOME, 
                                         UPPER(U.SOBRENOME) AS SOBRENOME,
                                         UPPER(D.NOME_DEPARTAMENTO) AS SETOR,
-                                        IF(I.CD_TIPO_TELEFONE = 'R', I.NUM_TELEFONE, NULL) AS RAMAL
+                                        I.NUM_TELEFONE AS RAMAL
                                     FROM USUARIO U
                                         JOIN DEPARTAMENTO D
-                                        ON U.CD_DEPARTAMENTO = D.CD_DEPARTAMENTO
+                                            ON U.CD_DEPARTAMENTO = D.CD_DEPARTAMENTO
                                         JOIN TELEFONE_INTERNO I
-                                        ON U.CD_MATRICULA = I.CD_MATRICULA
-                                    WHERE NOME LIKE '%$pesquisa%'
-                                    OR SOBRENOME LIKE '%$pesquisa%'
-                                    OR I.NUM_TELEFONE LIKE '%$pesquisa%'
-                                        ORDER BY NOME ASC
-                                        LIMIT 10";
+                                            ON U.CD_MATRICULA = I.CD_MATRICULA
+                                    WHERE I.CD_TIPO_TELEFONE = 'R'
+                                    AND (U.NOME LIKE '%$pesquisa%' OR SOBRENOME LIKE '%$pesquisa%')";
                 
                 $sql_query_pesquisa = $conn->query($sql_code_pesquisa) or die("ERRO ao consultar! " . $conn->error);
                 
@@ -226,7 +232,8 @@
                 <td class="linhaCorpo" colspan="3">Nenhum resultado encontrado...</td>
                 </tr>
                 <?php
-                } else {
+                } 
+                 else {
                     while($dados = $sql_query_pesquisa->fetch_assoc()) {
                         ?>
                             <tr class="linhaCorpo">
