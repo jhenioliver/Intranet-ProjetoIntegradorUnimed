@@ -202,7 +202,7 @@
         <!-- corpo tabela -->
 
             <?php
-            if (empty($_GET['search_pesquisa']) || empty($_GET['search_setor']) || !isset($_GET['search_pesquisa']) || !isset($_GET['search_setor'])) {
+            if (empty($_GET['search_setor']) || !isset($_GET['search_setor'])) {
                 ?>
             <tr class="linhaCorpo">
             <td class="linhaCorpo" colspan="3">Digite algo para pesquisar...</td>
@@ -226,9 +226,12 @@
             if($setor_pesquisa == 0){
                 $sql_code_pesquisa .= " AND (U.NOME LIKE '%$pesquisa%' OR SOBRENOME LIKE '%$pesquisa%')";
             }
-                else {
+                if($setor_pesquisa <> 0) {
                     $sql_code_pesquisa .= " AND (U.NOME LIKE '%$pesquisa%' OR SOBRENOME LIKE '%$pesquisa%') AND U.CD_DEPARTAMENTO = $setor_pesquisa";
                 }
+                    if($setor_pesquisa <> 0 || empty($_GET['search_pesquisa']) || !isset($_GET['search_pesquisa'])){
+                        $sql_code_pesquisa .= " AND U.CD_DEPARTAMENTO = $setor_pesquisa";
+                    }
             
             $sql_query_pesquisa = $conn->query($sql_code_pesquisa) or die("ERRO ao consultar! " . $conn->error);
             
@@ -250,8 +253,6 @@
                 }
                 } 
             }
-
-            //add a função de pesquisa so com o setor selecionado - puxar todos os colaborador daquele setor
             ?>
              
      </table>
