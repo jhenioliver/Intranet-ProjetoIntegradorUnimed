@@ -146,7 +146,7 @@
                     <div name="txtProcurarSetor" id="" class="txtprocurar">Setor:</div>
 
                     <select title="setor" name="setor" id="setor" class="selecioneSetor" placeholder="Setor">
-                        <option value="0">SETOR</option>
+                        <option value="00">SETOR</option>
                         <?php
                         $sql_code_setor =  "SELECT * FROM DEPARTAMENTO 
                                             ORDER BY NOME_DEPARTAMENTO ASC";
@@ -202,7 +202,7 @@
         <!-- corpo tabela -->
 
             <?php
-            if (empty($_GET['search_pesquisa'])) {
+            if (empty($_GET['search_pesquisa']) || empty($_GET['search_setor']) || !isset($_GET['search_pesquisa']) || !isset($_GET['search_setor'])) {
                 ?>
             <tr class="linhaCorpo">
             <td class="linhaCorpo" colspan="3">Digite algo para pesquisar...</td>
@@ -221,30 +221,38 @@
                                             ON U.CD_DEPARTAMENTO = D.CD_DEPARTAMENTO
                                         JOIN TELEFONE_INTERNO I
                                             ON U.CD_MATRICULA = I.CD_MATRICULA
-                                    WHERE I.CD_TIPO_TELEFONE = 'R'
-                                    AND (U.NOME LIKE '%$pesquisa%' OR SOBRENOME LIKE '%$pesquisa%')";
-                
-                $sql_query_pesquisa = $conn->query($sql_code_pesquisa) or die("ERRO ao consultar! " . $conn->error);
-                
-                if ($sql_query_pesquisa->num_rows == 0) {
-                    ?>
-                <tr class="linhaCorpo">
-                <td class="linhaCorpo" colspan="3">Nenhum resultado encontrado...</td>
-                </tr>
-                <?php
-                } 
-                 else {
-                    while($dados = $sql_query_pesquisa->fetch_assoc()) {
-                        ?>
-                            <tr class="linhaCorpo">
-                            <td class="colunaCorpoSetor"><?php echo $dados['SETOR'] ?> </td>
-                            <td class="colunaCorpoNome"><?php echo $dados['NOME'] . " " . $dados['SOBRENOME']; ?> </td>
-                            <td class="colunaCorpoRamal"><?php echo $dados['RAMAL'] ?></td>
-                            </tr>
-                        <?php
-                    }
+                                    WHERE I.CD_TIPO_TELEFONE = 'R'";
+            
+            if($setor_pesquisa == 0){
+                $sql_code_pesquisa .= " AND (U.NOME LIKE '%$pesquisa%' OR SOBRENOME LIKE '%$pesquisa%')";
+            }
+                else {
+                    $sql_code_pesquisa .= " AND (U.NOME LIKE '%$pesquisa%' OR SOBRENOME LIKE '%$pesquisa%') AND U.CD_DEPARTAMENTO = $setor_pesquisa";
                 }
-            } ?>
+            
+            $sql_query_pesquisa = $conn->query($sql_code_pesquisa) or die("ERRO ao consultar! " . $conn->error);
+            
+            if ($sql_query_pesquisa->num_rows == 0) {
+                ?>
+            <tr class="linhaCorpo">
+            <td class="linhaCorpo" colspan="3">Nenhum resultado encontrado...</td>
+            </tr>
+            <?php
+            } else {
+                while($dados1 = $sql_query_pesquisa->fetch_assoc()) {
+                    ?>
+                        <tr class="linhaCorpo">
+                        <td class="colunaCorpoSetor"><?php echo $dados1['SETOR'] ?> </td>
+                        <td class="colunaCorpoNome"><?php echo $dados1['NOME'] . " " . $dados1['SOBRENOME']; ?> </td>
+                        <td class="colunaCorpoRamal"><?php echo $dados1['RAMAL'] ?></td>
+                        </tr>
+                    <?php
+                }
+                } 
+            }
+
+            //add a função de pesquisa so com o setor selecionado - puxar todos os colaborador daquele setor
+            ?>
              
      </table>
     </section>
