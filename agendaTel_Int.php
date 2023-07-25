@@ -233,6 +233,7 @@
                         $sql_code_pesquisa .= " AND U.CD_DEPARTAMENTO = $setor_pesquisa";
                     }
             
+            $sql_code_pesquisa .= " ORDER BY NOME ASC LIMIT 10";
             $sql_query_pesquisa = $conn->query($sql_code_pesquisa) or die("ERRO ao consultar! " . $conn->error);
             
             if ($sql_query_pesquisa->num_rows == 0) {
@@ -242,12 +243,12 @@
             </tr>
             <?php
             } else {
-                while($dados1 = $sql_query_pesquisa->fetch_assoc()) {
+                while($dados = $sql_query_pesquisa->fetch_assoc()) {
                     ?>
                         <tr class="linhaCorpo">
-                        <td class="colunaCorpoSetor"><?php echo $dados1['SETOR'] ?> </td>
-                        <td class="colunaCorpoNome"><?php echo $dados1['NOME'] . " " . $dados1['SOBRENOME']; ?> </td>
-                        <td class="colunaCorpoRamal"><?php echo $dados1['RAMAL'] ?></td>
+                        <td class="colunaCorpoSetor"><?php echo $dados['SETOR'] ?> </td>
+                        <td class="colunaCorpoNome"><?php echo $dados['NOME'] . " " . $dados['SOBRENOME']; ?> </td>
+                        <td class="colunaCorpoRamal"><?php echo $dados['RAMAL'] ?></td>
                         </tr>
                     <?php
                 }
