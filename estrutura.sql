@@ -266,7 +266,7 @@ VALUES
 ('Braian', 'Picolo', 'braianpicolo', '@uni@227', 'I', '1987-05-15', 'Coordenador Médico', 54, 'M'),
 ('Barbara', 'Biagini', 'barbarabiagini', '@uni@227', 'F', '1996-09-08', 'Médica', 40, 'M'),
 ('Gustavo', 'Gomes Santos', 'gustavogomes', '@uni@227', 'M', '1983-02-01', 'Médico Pediatra', 55, 'M'),
-('Carolina', 'Almeida', 'carolinaalmeida', '@uni@227', 'I', '1999-10-30', 'Médica Cirirgiã', 26, 'M'),
+('Carolina', 'Almeida', 'carolinaalmeida', '@uni@227', 'I', '1999-10-30', 'Médica Cirurgiã', 26, 'M'),
 ('Rodrigo', 'Pereira', 'rodrigopereira', '@uni@227', 'M', '1985-06-20', 'Médico Obstetra', 33, 'M'),
 ('Lumélia', 'Martins', 'larissamartins', '@uni@227', 'F', '1993-03-14', 'Médica', 10, 'M'),
 ('Vilson', 'Fernandes', 'vitorfernandes', '@uni@227', 'M', '1991-08-10', 'Médico Cirurgião', 10, 'M'),
