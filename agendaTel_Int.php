@@ -146,7 +146,7 @@
                     <div name="txtProcurarSetor" id="" class="txtprocurar">Setor:</div>
 
                     <select title="setor" name="setor" id="setor" class="selecioneSetor" placeholder="Setor">
-                        <option value="00">SETOR</option>
+                        <option value="00">TODOS</option>
                         <?php
                         $sql_code_setor =  "SELECT * FROM DEPARTAMENTO 
                                             ORDER BY NOME_DEPARTAMENTO ASC";
@@ -205,7 +205,7 @@
             if (empty($_GET['search_setor']) || !isset($_GET['search_setor'])) {
                 ?>
             <tr class="linhaCorpo">
-            <td class="linhaCorpo" colspan="3">Digite algo para pesquisar...</td>
+            <td class="linhaCorpo" colspan="3">Digite ou selecione algo para pesquisar e pressione a tecla 'Enter'.</td>
             </tr>
             <?php
             } else {
@@ -223,15 +223,15 @@
                                             ON U.CD_MATRICULA = I.CD_MATRICULA
                                     WHERE I.CD_TIPO_TELEFONE = 'R'";
             
-            if($setor_pesquisa == 0){
+            if($setor_pesquisa == 00 || isset($_GET['search_pesquisa'])){
                 $sql_code_pesquisa .= " AND (U.NOME LIKE '%$pesquisa%' OR SOBRENOME LIKE '%$pesquisa%')";
             }
-                if($setor_pesquisa <> 0) {
-                    $sql_code_pesquisa .= " AND (U.NOME LIKE '%$pesquisa%' OR SOBRENOME LIKE '%$pesquisa%') AND U.CD_DEPARTAMENTO = $setor_pesquisa";
-                }
-                    if($setor_pesquisa <> 0 || empty($_GET['search_pesquisa']) || !isset($_GET['search_pesquisa'])){
-                        $sql_code_pesquisa .= " AND U.CD_DEPARTAMENTO = $setor_pesquisa";
+                    if($setor_pesquisa <> 00) {
+                        $sql_code_pesquisa .= " AND (U.NOME LIKE '%$pesquisa%' OR SOBRENOME LIKE '%$pesquisa%') AND U.CD_DEPARTAMENTO = $setor_pesquisa";
                     }
+                        if($setor_pesquisa <> 00 || empty($_GET['search_pesquisa']) || !isset($_GET['search_pesquisa'])){
+                            $sql_code_pesquisa .= " AND U.CD_DEPARTAMENTO = $setor_pesquisa";
+                        }
             
             $sql_code_pesquisa .= " ORDER BY NOME ASC LIMIT 10";
             $sql_query_pesquisa = $conn->query($sql_code_pesquisa) or die("ERRO ao consultar! " . $conn->error);
