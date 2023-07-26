@@ -200,7 +200,6 @@ VALUES
 
 /* POVOAÇÃO USUÁRIOS */
 
-/*JA POVOADO/EXECUTADO PRIMEIRA PARTE */
 INSERT INTO USUARIO (NOME, SOBRENOME, USUARIO, SENHA, SEXO, DATA_NASCIMENTO, CARGO, CD_DEPARTAMENTO, CD_TIPO_CARGO)
 VALUES
 ('Fernanda', 'Guimarães', 'fernandaguimaraes', '@uni@227', 'I', '1987-10-22', 'Assistente Administrativo de Suprimentos', 1, 'C'),
@@ -317,4 +316,7 @@ VALUES
 ('Marcela', 'Priscila Almeida', 'marcelapriscila', '@uni@227', 'F', '1999-08-25', 'Analista de Relacionamento Cooperado', 52, 'C'),
 ('Antônio', 'Fossa', 'antoniofossa', '@uni@227', 'M', '1996-10-03', 'Coordenador de Secretaria', 52, 'C'),
 ('Pedro', 'Los', 'pedrolos', '@uni@227', 'M', '1986-02-25', 'Gerente de Operações', 48, 'C'),
-('Rayan', 'Cristi', 'rayancristi', '@uni@227', 'I', '1990-07-13', 'Desenvolvedor de Software', 48, 'C');
+('Rayan', 'Cristi', 'rayancristi', '@uni@227', 'I', '1990-07-13', 'Desenvolvedor de Software', 48, 'C'),
+('Julianne', 'Cristina Almeida', 'juliannealmeida', '@uni@227', 'F', '1998-08-11', 'Enfermeira', 26, 'C'),
+('Claudir', 'Simonetto', 'claudir.simonetto', '@uni@227', 'M', '1980-05-26', 'Médico', 27, 'C'),
+('Alan', 'Borges da Silva', 'alanborges', '@uni@227', 'M', '2001-02-05', 'Enfermeiro', 27, 'C');
