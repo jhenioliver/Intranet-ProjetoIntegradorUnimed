@@ -1,8 +1,8 @@
-/*Criação do banco*/
+/*CRIAÇÃO DO BANCO*/
 
 CREATE DATABASE IF NOT EXISTS intranet_unimed;
 
-/*Criação das Tabelas*/
+/*CRIAÇÃO DAS TABELAS*/
 
 USE intranet_unimed;
 --
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS TIPO_CARGO
     PRIMARY KEY (CD_TIPO_CARGO)
 );
 
-/*Chaves Estrangeiras*/
+/*CHAVES ESTRANGEIRAS*/
 
 ALTER TABLE USUARIO
 ADD CONSTRAINT FK_CD_DEPARTAMENTO_USER
@@ -115,7 +115,7 @@ ADD CONSTRAINT FK_CD_TIPO_TELEFONE_EXT
 FOREIGN KEY (CD_TIPO_TELEFONE)
 REFERENCES TIPO_TELEFONE (CD_TIPO_TELEFONE);
 
-/*Povoação do Banco*/
+/*POVOANDO TIPO DE CARGO, TELEFONE E DEPARTAMENTOS*/
 
 INSERT INTO TIPO_CARGO (CD_TIPO_CARGO, TIPO_CARGO)
 VALUES
@@ -189,7 +189,7 @@ VALUES
 ('UTI NEONATAL'),
 ('UTI PEDIÁTRICA');
 
-/*Povoação Login*/
+/*POVOAÇÃO LOGIN*/
 
 INSERT INTO USUARIO (USUARIO, SENHA, NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, CARGO, CD_DEPARTAMENTO, CD_TIPO_CARGO)
 VALUES
@@ -325,3 +325,182 @@ VALUES
 ('Márcia', 'Cordeiro', 'marciacordeiro', '@uni@227', 'F', '1988-12-08', 'Enfermeira', 54, 'C'),
 ('Elisiane', 'Pereira', 'elisanepereira', '@uni@227', 'F', '1994-06-21', 'Enfermeira', 55, 'C'),
 ('Sayonara', 'Machado', 'sayonaramachado', '@uni@227', 'F', '1993-11-09', 'Enfermeira', 56, 'C');
+
+/*POVOAÇÃO DOS RAMAIS INTERNOS*/
+
+INSERT INTO TELEFONE_INTERNO(NUM_TELEFONE, CD_MATRICULA, CD_TIPO_TELEFONE)
+VALUES
+#ADMINISTRATIVO
+('2426', 300, 'R'),
+('2752', 301, 'R'),
+('2660', 353, 'R'),
+('2663', 354, 'R'),
+#TI
+('2661', 1, 'R'),
+('2306', 2, 'R'),
+('1883', 3, 'R'),
+('2751', 4, 'R'),
+#ALMOXARIFADO
+('1890', 9, 'R'),
+('2621', 11, 'R'),
+#AMBULATORIO
+('2487', 302, 'R'),
+('2489', 303, 'R'),
+#ARQUIVO
+('2394', 10, 'R'),
+('2718', 304, 'R'),
+#AUDITORIA
+('2652', 306, 'R'),
+('2650', 307, 'R'),
+#AUTORIZAÇÃO
+('1822', 308, 'R'),
+('1819', 309, 'R'),
+#CCIRAS
+('2568', 310, 'R'),
+('1894', 311, 'R'),
+#CENTRAL DE ATENDIMENTO - SAC
+('2719', 312, 'R'),
+('2257', 313, 'R'),
+#CENTRAL DE MATERIAIS
+('2422', 314, 'R'),
+('2701', 315, 'R'),
+#CENTRO CIRÚRGICO
+('2655', 316, 'R'),
+('2765', 317, 'R'),
+#COMERCIAL
+('2727', 318, 'R'),
+('2450', 319, 'R'),
+#COMPRAS
+('1831', 320, 'R'),
+('1865', 321, 'R'),
+#CONTROLADORIA
+('2772', 322, 'R'),
+('2695', 323, 'R'),
+#COTEP
+('2439', 324, 'R'),
+('2458', 325, 'R'),
+#ENFERMAGEM
+('2722', 326, 'R'),
+('2708', 327, 'R'),
+#EVB
+('2737', 328, 'R'),
+('2363', 329, 'R'),
+#FARMÁCIA
+('2649', 330, 'R'),
+('1867', 331, 'R'),
+#FATURAMENTO
+('2769', 332, 'R'),
+('2742', 333, 'R'),
+#FINANCEIRO
+('2491', 334, 'R'),
+('1886', 335, 'R'),
+#FISIOTERAPIA
+('2342', 336, 'R'),
+('2343', 337, 'R'),
+#GERÊNCIA
+('2661', 338, 'R'),
+('2663', 339, 'R'),
+#GESTÃO DE CONTRATOS
+('1816', 340, 'R'),
+('1802', 341, 'R'),
+#GESTÃO DE OBRAS
+('2376', 342, 'R'),
+('1895', 343, 'R'),
+#INFORMAÇÕES GERENCIAIS
+('2226', 344, 'R'),
+('2227', 345, 'R'),
+#INTERNAÇÃO
+('2432', 346, 'R'),
+('1874', 347, 'R'),
+#INTERNAÇÃO CIRÚRGICA
+('2230', 360, 'R'),
+('2235', 412, 'R'),
+#INTERNAÇÃO CLÍNICA
+('2300', 413, 'R'),
+('2256', 414, 'R'),
+#JURÍDICO
+('2388', 366, 'R'),
+('2397', 367, 'R'),
+#LABORATÓRIO
+('1850', 368, 'R'),
+('1851', 369, 'R'),
+#LAVANDERIA
+('2313', 370, 'R'),
+('2314', 371, 'R'),
+#MANUTENÇÃO
+('2738', 372, 'R'),
+('1898', 373, 'R'),
+#MARKENTING
+('1817', 348, 'R'),
+('2546', 351, 'R'),
+#MATERNIDADE
+('2434', 361, 'R'),
+('2421', 415, 'R'),
+#NUCLEO GESTÃO ESTRATÉGICA E ORÇAMENTO
+('2658', 374, 'R'),
+('2653', 375, 'R'),
+#NUCLEO DE GOVERNANÇA COPORATIVA
+('2474', 376, 'R'),
+('2472', 377, 'R'),
+#NUCLEO DE QUALIDADE EM SAUDE
+('1892', 378, 'R'),
+('2633', 379, 'R'),
+#NUTRIÇÃO
+('2648', 380, 'R'),
+('1877', 381, 'R'),
+#ONCOLOGIA
+('2740', 382, 'R'),
+('2358', 383, 'R'),
+#OUVIDORIA
+('2386', 384, 'R'),
+('2350', 385, 'R'),
+#PA
+('2702', 358, 'R'),
+('2739', 386, 'R'),
+('2470', 387, 'R'),
+#RELACIONAMENTO CORPORATIVO
+('2356', 388, 'R'),
+('2359', 389, 'R'),
+#RH
+('2351', 390, 'R'),
+('2218', 391, 'R'),
+#SAUDE OCUPACIONAL
+('2368', 392, 'R'),
+('2485', 393, 'R'),
+#SUSTENTABILIDADE
+('1815', 394, 'R'),
+('2297', 395, 'R'),
+#TELEFONIA
+('2622', 396, 'R'),
+('2565', 397, 'R'),
+#TRANSPORTE
+('2756', 400, 'R'),
+('2832', 401, 'R'),
+#UND INTERNAÇÃO PEDIÁTRICA SETOR B
+('2768', 365, 'R'),
+('2635', 410, 'R'),
+('2480', 411, 'R'),
+#UNIMAGEM CDI
+('2571', 402, 'R'),
+('2629', 403, 'R'),
+#UNIMED PERSONAL
+('2617', 404, 'R'),
+('2816', 405, 'R'),
+#UNIMED PERSONAL PINHALZINHO
+('2417', 406, 'R'),
+('2826', 407, 'R'),
+#UNIVOCÊ
+('2657', 408, 'R'),
+('2821', 409, 'R'),
+#UTI ADULTO 1
+('1872', 355, 'R'),
+('2551', 416, 'R'),
+#UTI ADULTO 2
+('2427', 357, 'R'),
+('2541', 417, 'R'),
+#UTI NEONATAL
+('2216', 359, 'R'),
+('2252', 418, 'R'),
+#UTI PEDIÁTRICA
+('2338', 356, 'R'),
+('1875', 419, 'R');
