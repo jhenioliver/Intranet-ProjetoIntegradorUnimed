@@ -320,4 +320,6 @@ VALUES
 ('Julianne', 'Cristina Almeida', 'juliannealmeida', '@uni@227', 'F', '1998-08-11', 'Enfermeira', 26, 'C'),
 ('Claudir', 'Simonetto', 'claudir.simonetto', '@uni@227', 'M', '1980-05-26', 'Médico', 27, 'C'),
 ('Alan', 'Borges da Silva', 'alanborges', '@uni@227', 'M', '2001-02-05', 'Enfermeiro', 27, 'C'),
-('Gustavo', 'Soares', 'gustavosoares', '@uni@227', 'M', '2001-06-26', 'Enfermeiro', 33, 'C');
+('Gustavo', 'Soares', 'gustavosoares', '@uni@227', 'M', '2001-06-26', 'Enfermeiro', 33, 'C'),
+('Carolina', 'Linhares', 'carolinalinhares', '@uni@227', 'F', '1999-04-26', 'Enfermeira', 53, 'C'),
+('Márcia', 'Cordeiro', 'marciacordeiro', '@uni@227', 'F', '1988-12-08', 'Enfermeira', 54, 'C');
