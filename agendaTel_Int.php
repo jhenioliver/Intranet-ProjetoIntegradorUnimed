@@ -223,17 +223,30 @@
                                             ON U.CD_MATRICULA = I.CD_MATRICULA
                                     WHERE I.CD_TIPO_TELEFONE = 'R'";
             
-            if($setor_pesquisa == 00 || isset($_GET['search_pesquisa'])){
+            if($setor_pesquisa == 00 && isset($_GET['search_pesquisa'])){
                 $sql_code_pesquisa .= " AND (U.NOME LIKE '%$pesquisa%' OR SOBRENOME LIKE '%$pesquisa%')";
             }
-                    if($setor_pesquisa <> 00) {
+                    if($setor_pesquisa <> 00 && !empty($_GET['search_pesquisa'])) {
                         $sql_code_pesquisa .= " AND (U.NOME LIKE '%$pesquisa%' OR SOBRENOME LIKE '%$pesquisa%') AND U.CD_DEPARTAMENTO = $setor_pesquisa";
                     }
-                        if($setor_pesquisa <> 00 || empty($_GET['search_pesquisa']) || !isset($_GET['search_pesquisa'])){
+                        if($setor_pesquisa <> 00 && empty($_GET['search_pesquisa'])){
                             $sql_code_pesquisa .= " AND U.CD_DEPARTAMENTO = $setor_pesquisa";
                         }
+                            if($setor_pesquisa == 00 && empty($_GET['search_pesquisa'])){
+                                $sql_code_pesquisa = "SELECT 
+                                                        UPPER(U.NOME) AS NOME, 
+                                                        UPPER(U.SOBRENOME) AS SOBRENOME,
+                                                        UPPER(D.NOME_DEPARTAMENTO) AS SETOR,
+                                                        I.NUM_TELEFONE AS RAMAL
+                                                    FROM USUARIO U
+                                                        JOIN DEPARTAMENTO D
+                                                            ON U.CD_DEPARTAMENTO = D.CD_DEPARTAMENTO
+                                                        JOIN TELEFONE_INTERNO I
+                                                            ON U.CD_MATRICULA = I.CD_MATRICULA
+                                                    WHERE I.CD_TIPO_TELEFONE = 'R'";
+                            }
             
-            $sql_code_pesquisa .= " ORDER BY NOME ASC LIMIT 10";
+            $sql_code_pesquisa .= " ORDER BY NOME ASC";
             $sql_query_pesquisa = $conn->query($sql_code_pesquisa) or die("ERRO ao consultar! " . $conn->error);
             
             if ($sql_query_pesquisa->num_rows == 0) {
