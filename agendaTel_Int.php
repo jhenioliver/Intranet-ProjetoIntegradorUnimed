@@ -264,10 +264,10 @@
                         <td class="colunaCorpoRamal"><?php echo $dados['RAMAL'] ?></td>
                         </tr>
                     <?php
-                }
+                    }
                 } 
             }
-            ?>
+                    ?>
              
      </table>
     </section>
