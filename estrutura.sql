@@ -513,3 +513,26 @@ VALUES
 #UTI PEDIÁTRICA
 ('2338', 64, 'R'),
 ('1875', 127, 'R');
+
+/*POVOAÇÃO DOS EXTERNOS (MÉDICOS, COLABORADORES E FORNECEDORES EXTERNOS)*/
+
+INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, CARGO, CD_DEPARTAMENTO, CD_TIPO_CARGO)
+VALUES
+#COLABORADORES
+('David', 'Luis Costa', 'M', '1985-02-07', 'Auxiliar de Serviços Gerais CME', 9, 'C'),
+('Carlos', 'de Oliveira', 'M', '1995-09-26', 'Enfermeiro', 27, 'C'),
+('Ruan', 'Pereira Dutra', 'I', '1994-04-25', 'Assistente Jurídico', 28, 'C'),
+('Gabriella', 'Ceconi', 'F', '1989-11-03', 'Analista de Marketing', 32, 'C'),
+('Andressa', 'Marcondes', 'F', '1997-12-26', 'Auxiliar de Gestão de Pessoas', 42, 'C'),
+#FORNECEDORES
+('Josué', 'Machado Lima', 'M', '1980-05-28', 'Analista de Suprimentos', 1, 'F'),
+('Antônio', 'Gonçalves', 'M', '1979-12-07', 'Comprador', 12, 'F'),
+('Isabelli', 'Prates', 'F', '1997-09-15', 'Consultor(a) de Vendas de Plano de Saúde', 11, 'F'),
+('Helena', 'Canossa', 'I', '1996-09-22', 'Coordenador(a) de Controladoria', 13, 'F'),
+('Janice', 'Martins', 'F', '1986-10-28', 'Auxiliar de Contratos', 22, 'F'),
+#MÉDICOS
+('Renata', 'Regert', 'F', '1968-11-28', 'Médica', 7, 'M'),
+('Alison', 'Verrel', 'M', '1978-07-07', 'Médico', 10, 'M'),
+('Luiz', 'Felipe Salles', 'M', '1974-06-08', 'Coordenador Médico', 53, 'M'),
+('Michel', 'Henrique Silva', 'M', '1980-07-24', 'Médico Pediatra', 55, 'M'),
+('Leonardo', 'Vitorino', 'M', '1983-03-21', 'Médico Obstetra', 33, 'M');
