@@ -293,8 +293,9 @@
     </section>
 
         <section name="boxPaginasAgenda" id="" class="boxPaginasAgenda">
-
-            <?php
+            
+            <?php 
+                if(!empty($_GET['pagina']) || isset($_GET['pagina'])){
 
                 if ($pagina > 1) { ?>
                 <a href="<?php echo 'agendaTel_Int.php?search_pesquisa='.$pesquisa.'&search_setor='.$setor_pesquisa.'&pagina='.$pagina - 1 ?>" class="paginasAgenda">
@@ -317,7 +318,7 @@
                 <a href="<?php echo 'agendaTel_Int.php?search_pesquisa='.$pesquisa.'&search_setor='.$setor_pesquisa.'&pagina='.$pagina + 1 ?>"  class="paginasAgenda">
                 >
                 </a>
-                <?php } ?>
+                <?php } } ?>
                 
     </section>
 </div>
