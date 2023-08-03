@@ -152,7 +152,7 @@
                                             ORDER BY NOME_DEPARTAMENTO ASC";
                         $sql_query_setor = $conn->query($sql_code_setor) or die($conn->error);
                         while($setor = $sql_query_setor->fetch_assoc()) { ?>
-                        <option <?php if(isset($_POST['setor']) && $_POST['setor'] == $setor['CD_DEPARTAMENTO']) echo "selected" ?>value="<?php echo $setor['CD_DEPARTAMENTO']; ?>"> <?php echo $setor['NOME_DEPARTAMENTO']; ?> </option>
+                        <option <?php if(isset($_GET['setor']) && $_GET['setor'] == $setor['CD_DEPARTAMENTO']) echo "selected" ?>value="<?php echo $setor['CD_DEPARTAMENTO']; ?>"> <?php echo $setor['NOME_DEPARTAMENTO']; ?> </option>
                         <?php } ?>
                     </select>
                     
