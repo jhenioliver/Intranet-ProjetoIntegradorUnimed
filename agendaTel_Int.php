@@ -177,9 +177,10 @@
 
                         function searchPesquisa()
                             {
-                                window.location = 'agendaTel_Int.php?search_pesquisa='+search_pesquisa.value+'&search_setor='+search_setor.value;
+                                window.location = 'agendaTel_Int.php?search_pesquisa='+search_pesquisa.value+'&search_setor='+search_setor.value+'&pagina=1';
                             }
                      </script>
+
                 </div>
             </div>
             <div name="listaExelRamais" id="" class="listaExelRamais">
@@ -200,6 +201,23 @@
             <th class="colunaHeaderRamal">RAMAL</th>
         </tr>
         <!-- corpo tabela -->
+
+            <?php
+
+            $pagina = 1;
+
+            if(isset($_GET['pagina'])){
+                $pagina = filter_input(INPUT_GET, "pagina", FILTER_VALIDATE_INT);
+            }                    
+                if(!$pagina || empty($_GET['pagina'])){
+                    $pagina = 1;
+                }
+
+            $limite = 10;
+
+            $inicio = ($pagina * $limite) - $limite;
+
+            ?>
 
             <?php
             if (empty($_GET['search_setor']) || !isset($_GET['search_setor'])) {
@@ -245,8 +263,10 @@
                                                             ON U.CD_MATRICULA = I.CD_MATRICULA
                                                     WHERE I.CD_TIPO_TELEFONE = 'R'";
                             }
-            
-            $sql_code_pesquisa .= " ORDER BY NOME ASC";
+                            
+            $registros = $conn->query($sql_code_pesquisa)->num_rows;
+            $total_paginas = ceil($registros/$limite);
+            $sql_code_pesquisa .= " ORDER BY NOME ASC LIMIT $inicio, $limite";
             $sql_query_pesquisa = $conn->query($sql_code_pesquisa) or die("ERRO ao consultar! " . $conn->error);
             
             if ($sql_query_pesquisa->num_rows == 0) {
@@ -259,9 +279,9 @@
                 while($dados = $sql_query_pesquisa->fetch_assoc()) {
                     ?>
                         <tr class="linhaCorpo">
-                        <td class="colunaCorpoSetor"><?php echo $dados['SETOR'] ?> </td>
+                        <td class="colunaCorpoSetor"><?php echo $dados['SETOR']; ?> </td>
                         <td class="colunaCorpoNome"><?php echo $dados['NOME'] . " " . $dados['SOBRENOME']; ?> </td>
-                        <td class="colunaCorpoRamal"><?php echo $dados['RAMAL'] ?></td>
+                        <td class="colunaCorpoRamal"><?php echo $dados['RAMAL']; ?></td>
                         </tr>
                     <?php
                     }
@@ -272,20 +292,33 @@
      </table>
     </section>
 
-    <section name="boxPaginasAgenda" id="" class="boxPaginasAgenda">
-            <input value="" title="pgEsquerda" name="botaoPassarPgEsquerda" id="" class="botaoPassarPgEsquerda" type="button" placeholder="oi" >
-            <hr class="divisaoPaginacao">
-            <div name="pg1" id="" class="paginasAgendaAtual">1</div>
-            <hr class="divisaoPaginacao">
-            <div name="pg2" id="" class="paginasAgenda">2</div>
-            <hr class="divisaoPaginacao">
-            <div name="pg3" id="" class="paginasAgenda">3</div>
-            <hr class="divisaoPaginacao">
-            <div name="pg4" id="" class="paginasAgenda">4</div>
-            <hr class="divisaoPaginacao">
-            <div name="pg5" id="" class="paginasAgenda">5</div>
-            <hr class="divisaoPaginacao">
-            <input value="" title="pgDireita" name="botaoPassarPgDireita" id="" class="botaoPassarPgDireita" type="button" placeholder="d">
+        <section name="boxPaginasAgenda" id="" class="boxPaginasAgenda">
+
+            <?php
+
+                if ($pagina > 1) { ?>
+                <a href="<?php echo 'agendaTel_Int.php?search_pesquisa='.$pesquisa.'&search_setor='.$setor_pesquisa.'&pagina='.$pagina - 1 ?>" class="paginasAgenda">
+                <
+                </a>
+            <?php } 
+               
+            for ($i = 1; $i<=$total_paginas; $i++) { 
+                if ($pagina == $i){
+                    $estilo = "class=\"paginasAgendaAtual\"";
+                }
+                    else {
+                        $estilo = "class=\"paginasAgenda\"";
+                    }
+            ?>
+                <a href="<?php echo 'agendaTel_Int.php?search_pesquisa='.$pesquisa.'&search_setor='.$setor_pesquisa.'&pagina='. $i; ?>" name="pg" <?php echo $estilo; ?> > <?php echo $i; ?> </a>
+                <?php }
+
+                if($pagina < $total_paginas){ ?>
+                <a href="<?php echo 'agendaTel_Int.php?search_pesquisa='.$pesquisa.'&search_setor='.$setor_pesquisa.'&pagina='.$pagina + 1 ?>"  class="paginasAgenda">
+                >
+                </a>
+                <?php } ?>
+                
     </section>
 </div>
 

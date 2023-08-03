@@ -1,0 +1,312 @@
+<!-- ----------------------- Tabela Externos Colaboradores ----------------------- -->
+        <table class="tabelaAgendaExternosColaboradores">
+        <!-- header -->
+            <tr class="linhaHeader">
+                <th class="colunaHeaderTipo">TIPO</th>
+                <th class="colunaHeaderNome">NOME</th>
+                <th class="colunaHeaderSetor">SETOR</th>
+                <th class="colunaHeaderTelefone">TELEFONE</th>
+                <th class="colunaHeaderCelular">CELULAR</th>
+                <th class="colunaHeaderCelular">CELULAR 2</th>
+            </tr>
+        <!-- corpo -->
+            <tr class="linhaCorpo">
+                <td class="colunaCorpoTipo">COLABORADOR</td>
+                <td class="colunaCorpoNome">Jheniffer De Oliveira</td>
+                <td class="colunaCorpoSetor">UNIDADE DE INTERNACAO CIRURGICA - 3? PAVIMENTO</td>
+                <td class="colunaCorpoTelefone"> 9 9999-9999</td>
+                <td class="colunaCorpoCelular"> 9 9999-9999</td>
+                <td class="colunaCorpoCelular"> 9 9999-9999</td>
+            </tr>
+        </table>
+
+<!-- ----------------------- Tabela Externos Medicos ----------------------- -->
+        <table class="tabelaAgendaExternosMedicos">
+        <!-- header -->
+            <tr class="linhaHeader">
+                <th class="colunaHeaderTipo">TIPO</th>
+                <th class="colunaHeaderNome">NOME</th>
+                <th class="colunaHeaderEspecialidade">ESPECIALIDADE</th>
+                <th class="colunaHeaderTelefone">TELEFONE</th>
+            </tr>
+        <!-- corpo -->
+            <tr class="linhaCorpo">
+                <td class="colunaCorpoTipo">MEDICO</td>
+                <td class="colunaCorpoNome">Lucas D avila</td>
+                <td class="colunaCorpoEpecialidade">MEDICO PATOLOGISTA CLINICO/ MEDICINA</td>
+                <td class="colunaCorpoTelefone"> 9 9999-9999</td>
+            </tr>
+            </table>
+
+<!-- ----------------------- Tabela Externos Fornecedores ----------------------- -->
+        <table class="tabelaAgendaExternosFornecedores">
+            <!-- header -->
+            <tr class="linhaHeader">
+                <th class="colunaHeaderTipo">FORNECEDOR</th>
+                <th class="colunaHeaderNome">NOME</th>
+                <th class="colunaHeaderMunicipio">MUNICIPIO</th>
+                <th class="colunaHeaderBairro">BAIRRO</th>
+                <th class="colunaHeaderTelefone">TELEFONE</th>
+            </tr>
+            <!-- corpo -->
+            <tr class="linhaCorpo">
+                <td class="colunaCorpoTipo">FORNECEDOR</td>
+                <td class="colunaCorpoNomeEmpresa">Kauna de Lara Informatica</td>
+                <td class="colunaCorpoMunicipio">CHAPECÓ - SC</td>
+                <td class="colunaCorpoBairro">MARIA GORETTI</td>
+                <td class="colunaCorpoTelefone"> 9 9999-9999</td>
+            </tr>
+        </table>
+
+
+                                        CSS
+<style>
+/* COLABORADORES */
+.tabelaAgendaExternosColaboradores{
+    width: 99%;
+    height: 99%;
+    gap: 10px;
+}
+.linhaHeader{
+    height: 8%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.colunaHeaderTipo{
+    background-color: #00985D;
+    width: 17%;
+    height: 99%;
+    border: none;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.colunaHeaderNome{
+    background-color: #00985D;
+    width: 26%;
+    height: 99%;
+    border: none;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.colunaHeaderSetor{
+    background-color: #00985D;
+    width: 26%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.colunaHeaderTelefone{
+    background-color: #00985D;
+    width: 16%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.colunaHeaderCelular{
+    background-color: #00985D;
+    width: 15%;
+    height: 99%;
+    border: none;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.linhaCorpo{
+    background-color: #EAE2D8;
+    color: #00524C;
+    height: 8%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+.colunaCorpoTipo{
+    color: #00524C;
+    width: 17%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.colunaCorpoNome{
+    color: #00524C;
+    width: 26%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.colunaCorpoSetor{
+    color: #00524C;
+    width: 26%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.colunaCorpoTelefone{
+    color: #00524C;
+    width: 16%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.colunaCorpoCelular{
+    color: #00524C;
+    width: 15%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+/* MEDICOS */
+.tabelaAgendaExternosMedicos{
+    width: 99%;
+    height: 99%;
+    gap: 10px;
+}
+.colunaHeaderEspecialidade{
+    background-color: #00985D;
+    width: 40%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.colunaCorpoEpecialidade{
+    color: #00524C;
+    width: 40%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+/* FORNECEDORES */
+.tabelaAgendaExternosFornecedores{
+    width: 99%;
+    height: 99%;
+    gap: 10px;
+}
+.colunaHeaderMunicipio{
+    background-color: #00985D;
+    width: 20%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.colunaHeaderBairro{
+    background-color: #00985D;
+    width: 21%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.colunaCorpoNomeEmpresa{
+    color: #00524C;
+    width: 26%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.colunaCorpoMunicipio{
+    color: #00524C;
+    width: 20%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.colunaCorpoBairro{
+    color: #00524C;
+    width: 21%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+</style>
