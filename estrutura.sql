@@ -31,7 +31,23 @@ CREATE TABLE IF NOT EXISTS EXTERNO
     CARGO VARCHAR (250),
     CD_DEPARTAMENTO INT,
     CD_TIPO_CARGO VARCHAR(5),
+    ESPECIALIDADE VARCHAR(100),
     PRIMARY KEY (CD_EXTERNO)
+);
+--
+CREATE TABLE IF NOT EXISTS ENDERECO_EXTERNO
+(
+	CD_ENDERECO_EXT INT NOT NULL AUTO_INCREMENT,
+    CD_EXTERNO INT,
+    ESTADO VARCHAR (100),
+    MUNICIPIO VARCHAR (100),
+    BAIRRO VARCHAR (100),
+    LOGRADOURO VARCHAR (50),
+    RUA VARCHAR (100),
+    NUMERO INT,
+    COMPLEMENTO VARCHAR(1),
+    CEP VARCHAR(20),
+    PRIMARY KEY (CD_ENDERECO_EXT)
 );
 --
 CREATE TABLE IF NOT EXISTS TELEFONE_INTERNO
@@ -72,6 +88,15 @@ CREATE TABLE IF NOT EXISTS TIPO_CARGO
     TIPO_CARGO VARCHAR(25),
     PRIMARY KEY (CD_TIPO_CARGO)
 );
+--
+CREATE TABLE IF NOT EXISTS SIGLARIO
+(
+	CD_SIGLA INT NOT NULL AUTO_INCREMENT,
+    SIGLA VARCHAR(250),
+    DESCRICAO VARCHAR(250),
+    USO VARCHAR(10),
+    PRIMARY KEY (CD_SIGLA)
+);
 
 /*CHAVES ESTRANGEIRAS*/
 
@@ -95,13 +120,18 @@ ADD CONSTRAINT FK_CD_TIPO_CARGO_EXT
 FOREIGN KEY (CD_TIPO_CARGO)
 REFERENCES TIPO_CARGO (CD_TIPO_CARGO);
 --
+ALTER TABLE ENDERECO_EXTERNO
+ADD CONSTRAINT FK_CD_ENDERECO_EXT
+FOREIGN KEY (CD_EXTERNO)
+REFERENCES EXTERNO (CD_EXTERNO);
+--
 ALTER TABLE TELEFONE_INTERNO
 ADD CONSTRAINT FK_CD_MATRICULA
 FOREIGN KEY (CD_MATRICULA)
 REFERENCES USUARIO (CD_MATRICULA);
 --
 ALTER TABLE TELEFONE_EXTERNO
-ADD CONSTRAINT FK_CD_EXTERNO
+ADD CONSTRAINT FK_CD_TELEFONE_EXT
 FOREIGN KEY (CD_EXTERNO)
 REFERENCES EXTERNO (CD_EXTERNO);
 --
@@ -524,15 +554,21 @@ VALUES
 ('Ruan', 'Pereira Dutra', 'I', '1994-04-25', 'Assistente Jurídico', 28, 'C'),
 ('Gabriella', 'Ceconi', 'F', '1989-11-03', 'Analista de Marketing', 32, 'C'),
 ('Andressa', 'Marcondes', 'F', '1997-12-26', 'Auxiliar de Gestão de Pessoas', 42, 'C'),
+--
 #FORNECEDORES
-('Josué', 'Machado Lima', 'M', '1980-05-28', 'Analista de Suprimentos', 1, 'F'),
-('Antônio', 'Gonçalves', 'M', '1979-12-07', 'Comprador', 12, 'F'),
-('Isabelli', 'Prates', 'F', '1997-09-15', 'Consultor(a) de Vendas de Plano de Saúde', 11, 'F'),
-('Helena', 'Canossa', 'I', '1996-09-22', 'Coordenador(a) de Controladoria', 13, 'F'),
-('Janice', 'Martins', 'F', '1986-10-28', 'Auxiliar de Contratos', 22, 'F'),
+INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, CD_TIPO_CARGO)
+VALUES
+('Josué', 'Machado Lima', 'M', '1980-05-28', 'F'),
+('Antônio', 'Gonçalves', 'M', '1979-12-07','F'),
+('Isabelli', 'Prates', 'F', '1997-09-15', 'F'),
+('Helena', 'Canossa', 'I', '1996-09-22', 'F'),
+('Janice', 'Martins', 'F', '1986-10-28', 'F');
+--
 #MÉDICOS
-('Renata', 'Regert', 'F', '1968-11-28', 'Médica', 7, 'M'),
-('Alison', 'Verrel', 'M', '1978-07-07', 'Médico', 10, 'M'),
+INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, ESPECIALIDADE, CD_DEPARTAMENTO, CD_TIPO_CARGO)
+VALUES
+('Renata', 'Regert', 'F', '1968-11-28', 'Médico Patologista Clinico/Medicina', 7, 'M'),
+('Alison', 'Verrel', 'M', '1978-07-07', 'Médico Patologista Clinico/Medicina', 10, 'M'),
 ('Luiz', 'Felipe Salles', 'M', '1974-06-08', 'Coordenador Médico', 53, 'M'),
 ('Michel', 'Henrique Silva', 'M', '1980-07-24', 'Médico Pediatra', 55, 'M'),
 ('Leonardo', 'Vitorino', 'M', '1983-03-21', 'Médico Obstetra', 33, 'M');
