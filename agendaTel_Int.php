@@ -138,7 +138,7 @@
 
                 <div name="boxProcurarPor" id="" class="boxProcurarPor">
                     <div name="txtProcurarPor" id="" class="txtprocurar">Procurar Por:</div>
-                        <input name="searchProcurarPor" id="searchProcurarPor" class="searchProcurarPor" type="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>"placeholder="Procurar Por">
+                        <input name="searchProcurarPor" id="searchProcurarPor" class="searchProcurarPor" type="search" value="<?php if(isset($_GET['search_pesquisa'])) echo $_GET['search_pesquisa']; ?>"placeholder="Procurar Por">
                     
                 </div>
 
