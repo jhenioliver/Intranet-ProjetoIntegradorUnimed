@@ -155,6 +155,7 @@
                         <option <?php if(isset($_GET['setor']) && $_GET['setor'] == $setor['CD_DEPARTAMENTO']) echo "selected" ?>value="<?php echo $setor['CD_DEPARTAMENTO']; ?>"> <?php echo $setor['NOME_DEPARTAMENTO']; ?> </option>
                         <?php } ?>
                     </select>
+                    </div>
                     
                     <script>
                         var search_pesquisa = document.getElementById('searchProcurarPor');
@@ -181,7 +182,6 @@
                             }
                      </script>
 
-                </div>
             </div>
             <div name="listaExelRamais" id="" class="listaExelRamais">
                 <a href="https://www.unimedchapeco.com.br/intranet/telefones/interno/download">
