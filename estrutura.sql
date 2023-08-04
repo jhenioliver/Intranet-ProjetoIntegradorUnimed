@@ -546,9 +546,9 @@ VALUES
 
 /*POVOAÇÃO DOS EXTERNOS (MÉDICOS, COLABORADORES E FORNECEDORES EXTERNOS)*/
 
+#COLABORADORES
 INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, CARGO, CD_DEPARTAMENTO, CD_TIPO_CARGO)
 VALUES
-#COLABORADORES
 ('David', 'Luis Costa', 'M', '1985-02-07', 'Auxiliar de Serviços Gerais CME', 9, 'C'),
 ('Carlos', 'de Oliveira', 'M', '1995-09-26', 'Enfermeiro', 27, 'C'),
 ('Ruan', 'Pereira Dutra', 'I', '1994-04-25', 'Assistente Jurídico', 28, 'C'),
@@ -572,3 +572,52 @@ VALUES
 ('Luiz', 'Felipe Salles', 'M', '1974-06-08', 'Coordenador Médico', 53, 'M'),
 ('Michel', 'Henrique Silva', 'M', '1980-07-24', 'Médico Pediatra', 55, 'M'),
 ('Leonardo', 'Vitorino', 'M', '1983-03-21', 'Médico Obstetra', 33, 'M');
+
+/*POVOAÇÃO DOS ENDEREÇOS EXTERNOS*/
+
+INSERT INTO ENDERECO_EXTERNO (CD_EXTERNO, ESTADO, MUNICIPIO, BAIRRO)
+VALUES
+('6', 'Santa Catarina', 'Coronel Freitas', 'Vila Lourdes'),
+('7', 'São Paulo', 'Jundiaí', 'Vila Alvorada'),
+('8', 'Rio Grande do Sul', 'Porto Alegre', 'Ilha do Pavão' ),
+('9', 'Santa Catarina', 'Nova Erechim', 'Morada do Sol'),
+('10', 'Santa Catarina', 'Criciúma', 'Santa Luzia');
+
+/*POVOAÇÃO DOS TELEFONES EXTERNOS*/
+
+#COLABORADORES
+INSERT INTO TELEFONE_EXTERNO (CD_EXTERNO, NUM_TELEFONE, CD_TIPO_TELEFONE)
+VALUES
+(1, '(555) 123-4567', 'P'),
+(1, '+55 49 91234-5678', 'C'),
+(1, '+55 49 92345-6789', 'C'),
+(2, '(555) 987-6543', 'P'),
+(2, '+55 11 93456-7890', 'C'),
+(2, '+55 11 94567-8901', 'C'),
+(3, '+55 51 95678-9012', 'C'),
+(4, '+55 49 96789-0123', 'C'),
+(5, '+55 49 97890-1234', 'C'),
+(3, '+55 11 93456-7890', 'C'),
+(4, '+55 11 94567-8901', 'C'),
+(5, '+55 11 95678-9012', 'C'),
+(3, '(555) 555-8008', 'P'),
+(4, '(555) 555-9009', 'P'),
+(5, '(555) 555-4040', 'P');
+
+#FORNECEDORES
+INSERT INTO TELEFONE_EXTERNO (CD_EXTERNO, NUM_TELEFONE, CD_TIPO_TELEFONE)
+VALUES
+(6, '+55 11 98901-2345', 'P'),
+(7, '+55 11 99012-3456', 'P'),
+(8, '+55 11 90123-4567', 'P'),
+(9, '+55 11 91234-5678', 'P'),
+(10, '+55 11 92345-6789', 'P');
+
+#MEDICOS
+INSERT INTO TELEFONE_EXTERNO (CD_EXTERNO, NUM_TELEFONE, CD_TIPO_TELEFONE)
+VALUES
+(11, '+55 11 96789-0123', 'P'),
+(12, '+55 11 97890-1234', 'P'),
+(13, '+55 11 98901-2345', 'P'),
+(14, '+55 11 99012-3456', 'P'),
+(15, '+55 11 90123-4567', 'P');
