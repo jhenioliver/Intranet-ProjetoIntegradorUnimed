@@ -3,6 +3,9 @@
     if(empty($_SESSION)){
         print "<script>location.href='index.php';</script>";
     }
+
+    include("config.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -136,23 +139,141 @@
 
                 <div name="boxProcurarPor" id="" class="boxProcurarPor">
                     <div name="txtProcurarPor" id="" class="txtprocurar">Procurar Por:</div>
-                    <input name="searchProcurarPor" id="" class="searchProcurarPor" type="search" placeholder="Nome">
+                    <input name="searchProcurarPor" id="searchProcurarPor" class="searchProcurarPor" type="search" value="<?php if(isset($_GET['search_pesquisa'])) echo $_GET['search_pesquisa']; ?>" placeholder="Nome">
                 </div>
 
                 <div name="boxProcurarTipo" id="" class="boxProcurarTipo">
                     <div name="txtProcurartipos" id="" class="txtprocurar">Tipo:</div>
-                    <select title="tipos" name="" id="" class="selecioneTipos" placeholder="Setor">
-                        <option value="999">Tipo</option>
-                        <option value="1">Colaborador</option>
-                        <option value="2">Medicos</option>
-                        <option value="3">Fornecedores</option>
+
+                    <select title="tipos" name="" id="tipo" class="selecioneTipos">
+                        <?php
+                            $sql_code_tipo = "SELECT * FROM TIPO_CARGO ORDER BY TIPO_CARGO ASC";
+                            $sql_query_tipo = $conn->query($sql_code_tipo) or die ($conn->error);
+                            while($tipo = $sql_query_tipo->fetch_assoc()){ ?>
+                                <option <?php if(isset($_GET['tipo']) && $_GET['tipo'] == $tipo['CD_TIPO_CARGO']) echo "selected" ?>value="<?php echo $tipo['CD_TIPO_CARGO']; ?>"> <?php echo $tipo['TIPO_CARGO']; ?> </option>
+                            <?php } ?>
                     </select>
+
+                    <script>
+                        var search_pesquisa = document.getElementById('searchProcurarPor');
+
+                        search_pesquisa.addEventListener("keydown", function(event) {
+                            if (event.key === "Enter") 
+                            {
+                                searchPesquisa();
+                            }
+                        });
+
+                        var search_tipo = document.getElementById('tipo');
+
+                        search_tipo.addEventListener("keydown", function(event) {
+                            if (event.key === "Enter") 
+                            {
+                                searchPesquisa();
+                            }
+                        });
+
+                        function searchPesquisa()
+                            {
+                                window.location = 'agendaTel_Ext.php?search_pesquisa='+search_pesquisa.value+'&search_tipo='+search_tipo.value;
+                            }
+                     </script>
+
                 </div>
             </div>
         </div>
     </section>
+
+                    
 <!--lista agenda-->
-    <section name="boxListaAgenda" id="" class="boxListaAgenda">
+<?php
+
+        if(!isset($_GET['search_tipo']) || empty($_GET['search_tipo'])){ ?>
+            <section name="boxListaAgenda" id="" class="boxListaAgenda">
+            <table class="tabelaAgendaExternosColaboradores">
+                <tr class="linhaCorpo">
+                    <td class="linhaCorpo">Digite ou selecione algo para pesquisar e pressione a tecla 'Enter'.</td>
+                </tr>
+        <?php }
+
+        else { 
+            if($_GET['search_tipo'] == 'C') { ?>
+                <section name="boxListaAgenda" id="" class="boxListaAgenda">
+                <table class="tabelaAgendaExternosColaboradores">
+                <tr class="linhaHeader">
+                    <th class="colunaHeaderTipo">TIPO</th>
+                    <th class="colunaHeaderNome">NOME</th>
+                    <th class="colunaHeaderSetor">SETOR</th>
+                    <th class="colunaHeaderTelefone">TELEFONE</th>
+                    <th class="colunaHeaderCelular">CELULAR</th>
+                    <th class="colunaHeaderCelular">CELULAR 2</th>
+                </tr>
+            
+                <?php    
+                $tipo_pesquisa = $_GET['search_tipo'];
+                $pesquisa = $_GET['search_pesquisa'];
+                $sql_code_colaborador = "SELECT 
+                                            UPPER(EX.NOME) AS NOME,
+                                            UPPER(EX.SOBRENOME) AS SOBRENOME, 
+                                            UPPER(D.NOME_DEPARTAMENTO) AS SETOR, 
+                                            UPPER(TE.NUM_TELEFONE) AS TELEFONE,
+                                            UPPER(TP.TIPO_CARGO) AS TIPO
+                                        FROM EXTERNO EX
+                                            JOIN DEPARTAMENTO D
+                                                ON D.CD_DEPARTAMENTO = EX.CD_DEPARTAMENTO
+                                            JOIN TELEFONE_EXTERNO TE
+                                                ON TE.CD_EXTERNO = EX.CD_EXTERNO
+                                            JOIN TIPO_CARGO TP
+                                                ON TP.CD_TIPO_CARGO = EX.CD_TIPO_CARGO
+                                        WHERE EX.CD_TIPO_CARGO = 'C'
+                                        AND (EX.NOME LIKE '%$pesquisa%' OR EX.SOBRENOME LIKE '%$pesquisa%')
+                                        LIMIT 10";
+                $sql_query_colaborador = $conn->query($sql_code_colaborador) or die ("ERRO ao consultar " . $conn->error);
+
+                if($sql_query_colaborador->num_rows == 0){ ?>
+                        <tr class="linhaCorpo">
+                            <td class="linhaCorpo">Nenhum resultado encontrado...</td>
+                        </tr>
+                <?php }
+                    else{
+                        while ($dados_colaborador = $sql_query_colaborador->fetch_assoc()){ ?>
+                            <tr class="linhaCorpo">
+                            <td class="colunaCorpoTipo"><?php echo $dados_colaborador['TIPO']; ?></td>
+                            <td class="colunaCorpoNome"><?php echo $dados_colaborador['NOME']." ".$dados_colaborador['SOBRENOME']; ?></td>
+                            <td class="colunaCorpoSetor"><?php echo $dados_colaborador['SETOR']; ?></td>
+                            <td class="colunaCorpoTelefone">socorro</td>
+                            <td class="colunaCorpoCelular"><?php echo $dados_colaborador['TELEFONE']; ?></td>
+                            <td class="colunaCorpoCelular"> 9 9999-9999</td>
+                        </tr>
+                        <?php }
+                    }
+            }
+                if($_GET['search_tipo'] == 'F'){ ?>
+                    <section name="boxListaAgenda" id="" class="boxListaAgenda">
+                    <table class="tabelaAgendaExternosFornecedores">
+                    <tr class="linhaHeader">
+                        <th class="colunaHeaderTipo">FORNECEDOR</th>
+                        <th class="colunaHeaderNome">NOME</th>
+                        <th class="colunaHeaderMunicipio">MUNICIPIO</th>
+                        <th class="colunaHeaderBairro">BAIRRO</th>
+                        <th class="colunaHeaderTelefone">TELEFONE</th>
+                    </tr> 
+                <?php }
+                    if($_GET['search_tipo'] == 'M') { ?>
+                        <section name="boxListaAgenda" id="" class="boxListaAgenda">
+                        <table class="tabelaAgendaExternosMedicos">
+                        <tr class="linhaHeader">
+                            <th class="colunaHeaderTipo">TIPO</th>
+                            <th class="colunaHeaderNome">NOME</th>
+                            <th class="colunaHeaderEspecialidade">ESPECIALIDADE</th>
+                            <th class="colunaHeaderTelefone">TELEFONE</th>
+                        </tr>
+                    <?php }
+        }
+
+    ?>
+
+    </table>
         
     </section>
 <!-- -----===Paginas Agenda===----- -->
