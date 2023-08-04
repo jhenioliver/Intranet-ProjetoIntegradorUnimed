@@ -28,10 +28,12 @@ CREATE TABLE IF NOT EXISTS EXTERNO
     SOBRENOME VARCHAR(100) NOT NULL,
     SEXO VARCHAR(5),
     DATA_NASCIMENTO DATE,
-    CARGO VARCHAR (250),
+    CARGO_ESPECIALIDADE VARCHAR (250),
     CD_DEPARTAMENTO INT,
     CD_TIPO_CARGO VARCHAR(5),
-    ESPECIALIDADE VARCHAR(100),
+    TELEFONE VARCHAR(50),
+    CELULAR1 VARCHAR(50),
+    CELULAR2 VARCHAR(50),
     PRIMARY KEY (CD_EXTERNO)
 );
 --
@@ -57,15 +59,6 @@ CREATE TABLE IF NOT EXISTS TELEFONE_INTERNO
     CD_MATRICULA INT,
     CD_TIPO_TELEFONE VARCHAR(5),
     PRIMARY KEY (CD_TELEFONE_INT)
-);
---
-CREATE TABLE IF NOT EXISTS TELEFONE_EXTERNO
-(
-	CD_TELEFONE_EXT INT NOT NULL AUTO_INCREMENT,
-    NUM_TELEFONE VARCHAR(50) NOT NULL,
-    CD_EXTERNO INT,
-    CD_TIPO_TELEFONE VARCHAR(5),
-    PRIMARY KEY (CD_TELEFONE_EXT)
 );
 --
 CREATE TABLE IF NOT EXISTS TIPO_TELEFONE
@@ -130,18 +123,8 @@ ADD CONSTRAINT FK_CD_MATRICULA
 FOREIGN KEY (CD_MATRICULA)
 REFERENCES USUARIO (CD_MATRICULA);
 --
-ALTER TABLE TELEFONE_EXTERNO
-ADD CONSTRAINT FK_CD_TELEFONE_EXT
-FOREIGN KEY (CD_EXTERNO)
-REFERENCES EXTERNO (CD_EXTERNO);
---
 ALTER TABLE TELEFONE_INTERNO
 ADD CONSTRAINT FK_CD_TIPO_TELEFONE_INT
-FOREIGN KEY (CD_TIPO_TELEFONE)
-REFERENCES TIPO_TELEFONE (CD_TIPO_TELEFONE);
---
-ALTER TABLE TELEFONE_EXTERNO
-ADD CONSTRAINT FK_CD_TIPO_TELEFONE_EXT
 FOREIGN KEY (CD_TIPO_TELEFONE)
 REFERENCES TIPO_TELEFONE (CD_TIPO_TELEFONE);
 
@@ -547,31 +530,31 @@ VALUES
 /*POVOAÇÃO DOS EXTERNOS (MÉDICOS, COLABORADORES E FORNECEDORES EXTERNOS)*/
 
 #COLABORADORES
-INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, CARGO, CD_DEPARTAMENTO, CD_TIPO_CARGO)
+INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, CARGO_ESPECIALIDADE, CD_DEPARTAMENTO, CD_TIPO_CARGO, TELEFONE, CELULAR1, CELULAR2)
 VALUES
-('David', 'Luis Costa', 'M', '1985-02-07', 'Auxiliar de Serviços Gerais CME', 9, 'C'),
-('Carlos', 'de Oliveira', 'M', '1995-09-26', 'Enfermeiro', 27, 'C'),
-('Ruan', 'Pereira Dutra', 'I', '1994-04-25', 'Assistente Jurídico', 28, 'C'),
-('Gabriella', 'Ceconi', 'F', '1989-11-03', 'Analista de Marketing', 32, 'C'),
-('Andressa', 'Marcondes', 'F', '1997-12-26', 'Auxiliar de Gestão de Pessoas', 42, 'C'),
+('David', 'Luis Costa', 'M', '1985-02-07', 'Auxiliar de Serviços Gerais CME', 9, 'C', '(555) 555-1001', '91234-5678', '92345-6789'),
+('Carlos', 'de Oliveira', 'M', '1995-09-26', 'Enfermeiro', 27, 'C', '(555) 555-2002', '93456-7890', '94567-8901'),
+('Ruan', 'Pereira Dutra', 'I', '1994-04-25', 'Assistente Jurídico', 28, 'C', '(555) 555-3003', '95678-9012', '96789-0123'),
+('Gabriella', 'Ceconi', 'F', '1989-11-03', 'Analista de Marketing', 32, 'C', '(555) 555-4004', '97890-1234', '98901-2345'),
+('Andressa', 'Marcondes', 'F', '1997-12-26', 'Auxiliar de Gestão de Pessoas', 42, 'C', '(555) 555-5005', '99012-3456', '90123-4567');
 --
 #FORNECEDORES
-INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, CD_TIPO_CARGO)
+INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, CD_TIPO_CARGO, TELEFONE)
 VALUES
-('Josué', 'Machado Lima', 'M', '1980-05-28', 'F'),
-('Antônio', 'Gonçalves', 'M', '1979-12-07','F'),
-('Isabelli', 'Prates', 'F', '1997-09-15', 'F'),
-('Helena', 'Canossa', 'I', '1996-09-22', 'F'),
-('Janice', 'Martins', 'F', '1986-10-28', 'F');
+('Josué', 'Machado Lima', 'M', '1980-05-28', 'F', '(555) 555-6006'),
+('Antônio', 'Gonçalves', 'M', '1979-12-07','F', '(555) 555-7007'),
+('Isabelli', 'Prates', 'F', '1997-09-15', 'F', '(555) 555-8008'),
+('Helena', 'Canossa', 'I', '1996-09-22', 'F', '(555) 555-9009'),
+('Janice', 'Martins', 'F', '1986-10-28', 'F', '(555) 555-1010');
 --
 #MÉDICOS
-INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, ESPECIALIDADE, CD_DEPARTAMENTO, CD_TIPO_CARGO)
+INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, CARGO_ESPECIALIDADE, CD_DEPARTAMENTO, CD_TIPO_CARGO, TELEFONE)
 VALUES
-('Renata', 'Regert', 'F', '1968-11-28', 'Médico Patologista Clinico/Medicina', 7, 'M'),
-('Alison', 'Verrel', 'M', '1978-07-07', 'Médico Patologista Clinico/Medicina', 10, 'M'),
-('Luiz', 'Felipe Salles', 'M', '1974-06-08', 'Coordenador Médico', 53, 'M'),
-('Michel', 'Henrique Silva', 'M', '1980-07-24', 'Médico Pediatra', 55, 'M'),
-('Leonardo', 'Vitorino', 'M', '1983-03-21', 'Médico Obstetra', 33, 'M');
+('Renata', 'Regert', 'F', '1968-11-28', 'Médico Patologista Clinico/Medicina', 7, 'M', '(555) 555-2020'),
+('Alison', 'Verrel', 'M', '1978-07-07', 'Médico Patologista Clinico/Medicina', 10, 'M', '(555) 555-3030'),
+('Luiz', 'Felipe Salles', 'M', '1974-06-08', 'Coordenador Médico', 53, 'M', '(555) 555-4040'),
+('Michel', 'Henrique Silva', 'M', '1980-07-24', 'Médico Pediatra', 55, 'M', '(555) 555-5050'),
+('Leonardo', 'Vitorino', 'M', '1983-03-21', 'Médico Obstetra', 33, 'M', '(555) 555-6060');
 
 /*POVOAÇÃO DOS ENDEREÇOS EXTERNOS*/
 
@@ -582,42 +565,3 @@ VALUES
 ('8', 'Rio Grande do Sul', 'Porto Alegre', 'Ilha do Pavão' ),
 ('9', 'Santa Catarina', 'Nova Erechim', 'Morada do Sol'),
 ('10', 'Santa Catarina', 'Criciúma', 'Santa Luzia');
-
-/*POVOAÇÃO DOS TELEFONES EXTERNOS*/
-
-#COLABORADORES
-INSERT INTO TELEFONE_EXTERNO (CD_EXTERNO, NUM_TELEFONE, CD_TIPO_TELEFONE)
-VALUES
-(1, '(555) 123-4567', 'P'),
-(1, '+55 49 91234-5678', 'C'),
-(1, '+55 49 92345-6789', 'C'),
-(2, '(555) 987-6543', 'P'),
-(2, '+55 11 93456-7890', 'C'),
-(2, '+55 11 94567-8901', 'C'),
-(3, '+55 51 95678-9012', 'C'),
-(4, '+55 49 96789-0123', 'C'),
-(5, '+55 49 97890-1234', 'C'),
-(3, '+55 11 93456-7890', 'C'),
-(4, '+55 11 94567-8901', 'C'),
-(5, '+55 11 95678-9012', 'C'),
-(3, '(555) 555-8008', 'P'),
-(4, '(555) 555-9009', 'P'),
-(5, '(555) 555-4040', 'P');
-
-#FORNECEDORES
-INSERT INTO TELEFONE_EXTERNO (CD_EXTERNO, NUM_TELEFONE, CD_TIPO_TELEFONE)
-VALUES
-(6, '+55 11 98901-2345', 'P'),
-(7, '+55 11 99012-3456', 'P'),
-(8, '+55 11 90123-4567', 'P'),
-(9, '+55 11 91234-5678', 'P'),
-(10, '+55 11 92345-6789', 'P');
-
-#MEDICOS
-INSERT INTO TELEFONE_EXTERNO (CD_EXTERNO, NUM_TELEFONE, CD_TIPO_TELEFONE)
-VALUES
-(11, '+55 11 96789-0123', 'P'),
-(12, '+55 11 97890-1234', 'P'),
-(13, '+55 11 98901-2345', 'P'),
-(14, '+55 11 99012-3456', 'P'),
-(15, '+55 11 90123-4567', 'P');
