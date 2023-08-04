@@ -186,7 +186,9 @@
 
                     
 <!--lista agenda-->
-<?php
+    <?php
+
+        $pesquisa = $_GET['search_pesquisa'];
 
         if(!isset($_GET['search_tipo']) || empty($_GET['search_tipo'])){ ?>
             <section name="boxListaAgenda" id="" class="boxListaAgenda">
@@ -208,25 +210,23 @@
                     <th class="colunaHeaderCelular">CELULAR</th>
                     <th class="colunaHeaderCelular">CELULAR 2</th>
                 </tr>
-            
-                <?php    
-                $tipo_pesquisa = $_GET['search_tipo'];
-                $pesquisa = $_GET['search_pesquisa'];
+                
+                <?php
                 $sql_code_colaborador = "SELECT 
-                                            UPPER(EX.NOME) AS NOME,
-                                            UPPER(EX.SOBRENOME) AS SOBRENOME, 
+                                            UPPER(E.NOME) AS NOME,
+                                            UPPER(E.SOBRENOME) AS SOBRENOME, 
+                                            UPPER(E.TELEFONE) AS TELEFONE,
+                                            UPPER(E.CELULAR1) AS CELULAR1,
+                                            UPPER(E.CELULAR2) AS CELULAR2,
                                             UPPER(D.NOME_DEPARTAMENTO) AS SETOR, 
-                                            UPPER(TE.NUM_TELEFONE) AS TELEFONE,
                                             UPPER(TP.TIPO_CARGO) AS TIPO
-                                        FROM EXTERNO EX
+                                        FROM EXTERNO E
                                             JOIN DEPARTAMENTO D
-                                                ON D.CD_DEPARTAMENTO = EX.CD_DEPARTAMENTO
-                                            JOIN TELEFONE_EXTERNO TE
-                                                ON TE.CD_EXTERNO = EX.CD_EXTERNO
+                                                ON D.CD_DEPARTAMENTO = E.CD_DEPARTAMENTO
                                             JOIN TIPO_CARGO TP
-                                                ON TP.CD_TIPO_CARGO = EX.CD_TIPO_CARGO
-                                        WHERE EX.CD_TIPO_CARGO = 'C'
-                                        AND (EX.NOME LIKE '%$pesquisa%' OR EX.SOBRENOME LIKE '%$pesquisa%')
+                                                ON TP.CD_TIPO_CARGO = E.CD_TIPO_CARGO
+                                        WHERE E.CD_TIPO_CARGO = 'C'
+                                        AND (E.NOME LIKE '%$pesquisa%' OR E.SOBRENOME LIKE '%$pesquisa%')
                                         LIMIT 10";
                 $sql_query_colaborador = $conn->query($sql_code_colaborador) or die ("ERRO ao consultar " . $conn->error);
 
@@ -241,24 +241,61 @@
                             <td class="colunaCorpoTipo"><?php echo $dados_colaborador['TIPO']; ?></td>
                             <td class="colunaCorpoNome"><?php echo $dados_colaborador['NOME']." ".$dados_colaborador['SOBRENOME']; ?></td>
                             <td class="colunaCorpoSetor"><?php echo $dados_colaborador['SETOR']; ?></td>
-                            <td class="colunaCorpoTelefone">socorro</td>
-                            <td class="colunaCorpoCelular"><?php echo $dados_colaborador['TELEFONE']; ?></td>
-                            <td class="colunaCorpoCelular"> 9 9999-9999</td>
+                            <td class="colunaCorpoTelefone"><?php echo $dados_colaborador['TELEFONE']; ?></td>
+                            <td class="colunaCorpoCelular"><?php echo $dados_colaborador['CELULAR1']; ?></td>
+                            <td class="colunaCorpoCelular"><?php echo $dados_colaborador['CELULAR1']; ?></td>
                         </tr>
                         <?php }
                     }
             }
+
                 if($_GET['search_tipo'] == 'F'){ ?>
                     <section name="boxListaAgenda" id="" class="boxListaAgenda">
                     <table class="tabelaAgendaExternosFornecedores">
                     <tr class="linhaHeader">
-                        <th class="colunaHeaderTipo">FORNECEDOR</th>
+                        <th class="colunaHeaderTipo">TIPO</th>
                         <th class="colunaHeaderNome">NOME</th>
                         <th class="colunaHeaderMunicipio">MUNICIPIO</th>
                         <th class="colunaHeaderBairro">BAIRRO</th>
                         <th class="colunaHeaderTelefone">TELEFONE</th>
                     </tr> 
+                
+                <?php
+                $sql_code_fornecedor = "SELECT 
+                                            UPPER(E.NOME) AS NOME,
+                                            UPPER(E.SOBRENOME) AS SOBRENOME, 
+                                            UPPER(EN.MUNICIPIO) AS MUNICIPIO,
+                                            UPPER(EN.BAIRRO) AS BAIRRO,
+                                            UPPER(E.TELEFONE) AS TELEFONE,
+                                            UPPER(TP.TIPO_CARGO) AS TIPO
+                                        FROM EXTERNO E
+                                            JOIN TIPO_CARGO TP
+                                                ON TP.CD_TIPO_CARGO = E.CD_TIPO_CARGO
+                                            JOIN ENDERECO_EXTERNO EN
+                                                ON EN.CD_EXTERNO = E.CD_EXTERNO
+                                        WHERE E.CD_TIPO_CARGO = 'F'
+                                        AND (E.NOME LIKE '%$pesquisa%' OR E.SOBRENOME LIKE '%$pesquisa%')
+                                        LIMIT 10";
+                $sql_query_fornecedor = $conn->query($sql_code_fornecedor) or die ("ERRO ao consultar" . $conn->error);
+                
+                if($sql_query_fornecedor->num_rows == 0){ ?>
+                    <tr class="linhaCorpo">
+                            <td class="linhaCorpo">Nenhum resultado encontrado...</td>
+                        </tr>
                 <?php }
+                    else{
+                        while ($dados_fornecedor = $sql_query_fornecedor->fetch_assoc()){ ?>
+                            <tr class="linhaCorpo">
+                            <td class="colunaCorpoTipo"><?php echo $dados_fornecedor['TIPO']; ?></td>
+                            <td class="colunaCorpoNomeEmpresa"><?php echo $dados_fornecedor['NOME']." ".$dados_fornecedor['SOBRENOME']; ?></td>
+                            <td class="colunaCorpoMunicipio"><?php echo $dados_fornecedor['MUNICIPIO']; ?></td>
+                            <td class="colunaCorpoBairro"><?php echo $dados_fornecedor['BAIRRO']; ?></td>
+                            <td class="colunaCorpoTelefone"><?php echo $dados_fornecedor['TELEFONE']; ?></td>
+                        </tr>
+                        <?php }
+                    }
+                }
+
                     if($_GET['search_tipo'] == 'M') { ?>
                         <section name="boxListaAgenda" id="" class="boxListaAgenda">
                         <table class="tabelaAgendaExternosMedicos">
