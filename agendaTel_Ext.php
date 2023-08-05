@@ -305,7 +305,39 @@
                             <th class="colunaHeaderEspecialidade">ESPECIALIDADE</th>
                             <th class="colunaHeaderTelefone">TELEFONE</th>
                         </tr>
+                    <?php 
+                    
+                    $pesquisa = $_GET['search_pesquisa'];
+                    $sql_code_medico = "SELECT
+                                            UPPER(E.NOME) AS NOME,
+                                            UPPER(E.SOBRENOME) AS SOBRENOME,
+                                            UPPER(E.CARGO_ESPECIALIDADE) AS ESPECIALIDADE,
+                                            UPPER(E.TELEFONE) AS TELEFONE,
+                                            UPPER(TP.TIPO_CARGO) AS TIPO
+                                        FROM EXTERNO E
+                                            JOIN TIPO_CARGO TP
+                                            ON TP.CD_TIPO_CARGO = E.CD_TIPO_CARGO
+                                        WHERE E.CD_TIPO_CARGO = 'M'
+                                        AND (E.NOME LIKE '%$pesquisa%' OR E.SOBRENOME LIKE '%$pesquisa%')
+                                        LIMIT 10";
+                    $sql_query_medico = $conn->query($sql_code_medico) or die ("ERRO ao consultar! " . $conn->error);
+                    
+                    if($sql_query_medico->num_rows == 0){ ?>
+                        <tr class="linhaCorpo">
+                            <td class="linhaCorpo">Nenhum resultado encontrado...</td>
+                        </tr>
                     <?php }
+                        else{
+                            while($dados_medico = $sql_query_medico->fetch_assoc()){ ?>
+                                <tr class="linhaCorpo">
+                                    <td class="colunaCorpoTipo"><?php echo $dados_medico['TIPO']; ?></td>
+                                    <td class="colunaCorpoNome"><?php echo $dados_medico['NOME']." ".$dados_medico['SOBRENOME']; ?></td>
+                                    <td class="colunaCorpoEpecialidade"><?php echo $dados_medico['ESPECIALIDADE']; ?></td>
+                                    <td class="colunaCorpoTelefone"><?php echo $dados_medico['TELEFONE']; ?></td>
+                                </tr>
+                            <?php }
+                        }
+                    }
         }
 
     ?>
