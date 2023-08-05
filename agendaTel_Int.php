@@ -203,23 +203,6 @@
         <!-- corpo tabela -->
 
             <?php
-
-            $pagina = 1;
-
-            if(isset($_GET['pagina'])){
-                $pagina = filter_input(INPUT_GET, "pagina", FILTER_VALIDATE_INT);
-            }                    
-                if(!$pagina || empty($_GET['pagina'])){
-                    $pagina = 1;
-                }
-
-            $limite = 10;
-
-            $inicio = ($pagina * $limite) - $limite;
-
-            ?>
-
-            <?php
             if (empty($_GET['search_setor']) || !isset($_GET['search_setor'])) {
                 ?>
             <tr class="linhaCorpo">
@@ -227,6 +210,18 @@
             </tr>
             <?php
             } else {
+
+                $pagina = 1;
+                if(isset($_GET['pagina'])){
+                    $pagina = filter_input(INPUT_GET, "pagina", FILTER_VALIDATE_INT);
+                }                    
+                    if(!$pagina || empty($_GET['pagina'])){
+                        $pagina = 1;
+                    }
+
+                $limite = 10;
+                $inicio = ($pagina * $limite) - $limite;
+
                 $setor_pesquisa = $_GET['search_setor'];
                 $pesquisa = $_GET['search_pesquisa'];
                 $sql_code_pesquisa = "SELECT 
