@@ -175,7 +175,7 @@
 
                         function searchPesquisa()
                             {
-                                window.location = 'agendaTel_Ext.php?search_pesquisa='+search_pesquisa.value+'&search_tipo='+search_tipo.value;
+                                window.location = 'agendaTel_Ext.php?search_pesquisa='+search_pesquisa.value+'&search_tipo='+search_tipo.value+'&pagina=1';
                             }
                      </script>
 
@@ -196,7 +196,20 @@
                 </tr>
         <?php }
 
-        else { 
+        else {
+            $pesquisa = $_GET['search_pesquisa'];
+            $tipo_pesquisa = $_GET['search_tipo'];
+            $pagina = 1;
+                if(isset($_GET['pagina'])){
+                    $pagina = filter_input(INPUT_GET, "pagina", FILTER_VALIDATE_INT);
+                }                    
+                    if(!$pagina || empty($_GET['pagina'])){
+                        $pagina = 1;
+                    }
+
+            $limite = 10;
+            $inicio = ($pagina * $limite) - $limite; 
+
             if($_GET['search_tipo'] == 'C') { ?>
                 <section name="boxListaAgenda" id="" class="boxListaAgenda">
                 <table class="tabelaAgendaExternosColaboradores">
@@ -210,7 +223,6 @@
                 </tr>
                 
                 <?php
-                $pesquisa = $_GET['search_pesquisa'];
                 $sql_code_colaborador = "SELECT 
                                             UPPER(E.NOME) AS NOME,
                                             UPPER(E.SOBRENOME) AS SOBRENOME, 
@@ -225,8 +237,10 @@
                                             JOIN TIPO_CARGO TP
                                                 ON TP.CD_TIPO_CARGO = E.CD_TIPO_CARGO
                                         WHERE E.CD_TIPO_CARGO = 'C'
-                                        AND (E.NOME LIKE '%$pesquisa%' OR E.SOBRENOME LIKE '%$pesquisa%')
-                                        LIMIT 10";
+                                        AND (E.NOME LIKE '%$pesquisa%' OR E.SOBRENOME LIKE '%$pesquisa%')";
+                $registros = $conn->query($sql_code_colaborador)->num_rows;
+                $total_paginas = ceil($registros/$limite);
+                $sql_code_colaborador .= " LIMIT $inicio, $limite";
                 $sql_query_colaborador = $conn->query($sql_code_colaborador) or die ("ERRO ao consultar " . $conn->error);
 
                 if($sql_query_colaborador->num_rows == 0){ ?>
@@ -260,7 +274,6 @@
                     </tr> 
                 
                 <?php
-                $pesquisa = $_GET['search_pesquisa'];
                 $sql_code_fornecedor = "SELECT 
                                             UPPER(E.NOME) AS NOME,
                                             UPPER(E.SOBRENOME) AS SOBRENOME, 
@@ -274,8 +287,10 @@
                                             JOIN ENDERECO_EXTERNO EN
                                                 ON EN.CD_EXTERNO = E.CD_EXTERNO
                                         WHERE E.CD_TIPO_CARGO = 'F'
-                                        AND (E.NOME LIKE '%$pesquisa%' OR E.SOBRENOME LIKE '%$pesquisa%')
-                                        LIMIT 10";
+                                        AND (E.NOME LIKE '%$pesquisa%' OR E.SOBRENOME LIKE '%$pesquisa%')";
+                $registros = $conn->query($sql_code_fornecedor)->num_rows;
+                $total_paginas = ceil($registros/$limite);
+                $sql_code_fornecedor .= " LIMIT $inicio, $limite";
                 $sql_query_fornecedor = $conn->query($sql_code_fornecedor) or die ("ERRO ao consultar" . $conn->error);
                 
                 if($sql_query_fornecedor->num_rows == 0){ ?>
@@ -307,7 +322,6 @@
                         </tr>
                     <?php 
                     
-                    $pesquisa = $_GET['search_pesquisa'];
                     $sql_code_medico = "SELECT
                                             UPPER(E.NOME) AS NOME,
                                             UPPER(E.SOBRENOME) AS SOBRENOME,
@@ -318,8 +332,10 @@
                                             JOIN TIPO_CARGO TP
                                             ON TP.CD_TIPO_CARGO = E.CD_TIPO_CARGO
                                         WHERE E.CD_TIPO_CARGO = 'M'
-                                        AND (E.NOME LIKE '%$pesquisa%' OR E.SOBRENOME LIKE '%$pesquisa%')
-                                        LIMIT 10";
+                                        AND (E.NOME LIKE '%$pesquisa%' OR E.SOBRENOME LIKE '%$pesquisa%')";
+                    $registros = $conn->query($sql_code_medico)->num_rows;
+                    $total_paginas = ceil($registros/$limite);
+                    $sql_code_medico .= " LIMIT $inicio, $limite";
                     $sql_query_medico = $conn->query($sql_code_medico) or die ("ERRO ao consultar! " . $conn->error);
                     
                     if($sql_query_medico->num_rows == 0){ ?>
@@ -347,19 +363,31 @@
     </section>
 <!-- -----===Paginas Agenda===----- -->
     <section name="boxPaginasAgenda" id="" class="boxPaginasAgenda">
-            <input value="" title="pgEsquerda" name="botaoPassarPgEsquerda" id="" class="botaoPassarPgEsquerda" type="button" placeholder="oi">
-            <hr class="divisaoPaginacao">
-            <div name="pg1" id="" class="paginasAgendaAtual">1</div>
-            <hr class="divisaoPaginacao">
-            <div name="pg2" id="" class="paginasAgenda">2</div>
-            <hr class="divisaoPaginacao">
-            <div name="pg3" id="" class="paginasAgenda">3</div>
-            <hr class="divisaoPaginacao">
-            <div name="pg4" id="" class="paginasAgenda">4</div>
-            <hr class="divisaoPaginacao">
-            <div name="pg5" id="" class="paginasAgenda">5</div>
-            <hr class="divisaoPaginacao">
-            <input value="" title="pgEsquerda" name="botaoPassarPgEsquerda" id="" class="botaoPassarPgDireita" type="button" placeholder="d">
+        <?php
+            if(!empty($_GET['pagina']) || isset($_GET['pagina'])){
+
+            if ($pagina > 1) { ?>
+            <a href="<?php echo 'agendaTel_Ext.php?search_pesquisa='.$pesquisa.'&search_tipo='.$tipo_pesquisa.'&pagina='.$pagina - 1 ?>" class="paginasAgenda">
+            <
+            </a>
+        <?php } 
+            
+        for ($i = 1; $i<=$total_paginas; $i++) { 
+            if ($pagina == $i){
+                $estilo = "class=\"paginasAgendaAtual\"";
+            }
+                else {
+                    $estilo = "class=\"paginasAgenda\"";
+                }
+        ?>
+            <a href="<?php echo 'agendaTel_Ext.php?search_pesquisa='.$pesquisa.'&search_tipo='.$tipo_pesquisa.'&pagina='. $i; ?>" name="pg" <?php echo $estilo; ?> > <?php echo $i; ?> </a>
+            <?php }
+
+            if($pagina < $total_paginas){ ?>
+            <a href="<?php echo 'agendaTel_Ext.php?search_pesquisa='.$pesquisa.'&search_tipo='.$tipo_pesquisa.'&pagina='.$pagina + 1 ?>"  class="paginasAgenda">
+            >
+            </a>
+            <?php } } ?>
     </section>
 </div>
 
