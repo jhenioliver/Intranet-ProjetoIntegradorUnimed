@@ -188,8 +188,6 @@
 <!--lista agenda-->
     <?php
 
-        $pesquisa = $_GET['search_pesquisa'];
-
         if(!isset($_GET['search_tipo']) || empty($_GET['search_tipo'])){ ?>
             <section name="boxListaAgenda" id="" class="boxListaAgenda">
             <table class="tabelaAgendaExternosColaboradores">
@@ -212,6 +210,7 @@
                 </tr>
                 
                 <?php
+                $pesquisa = $_GET['search_pesquisa'];
                 $sql_code_colaborador = "SELECT 
                                             UPPER(E.NOME) AS NOME,
                                             UPPER(E.SOBRENOME) AS SOBRENOME, 
@@ -261,6 +260,7 @@
                     </tr> 
                 
                 <?php
+                $pesquisa = $_GET['search_pesquisa'];
                 $sql_code_fornecedor = "SELECT 
                                             UPPER(E.NOME) AS NOME,
                                             UPPER(E.SOBRENOME) AS SOBRENOME, 

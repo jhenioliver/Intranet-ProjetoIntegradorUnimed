@@ -527,7 +527,7 @@ VALUES
 ('2338', 64, 'R'),
 ('1875', 127, 'R');
 
-/*POVOAÇÃO DOS EXTERNOS (MÉDICOS, COLABORADORES E FORNECEDORES EXTERNOS)*/
+/*PRIMEIRA POVOAÇÃO DOS EXTERNOS (MÉDICOS, COLABORADORES E FORNECEDORES EXTERNOS)*/
 
 #COLABORADORES
 INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, CARGO_ESPECIALIDADE, CD_DEPARTAMENTO, CD_TIPO_CARGO, TELEFONE, CELULAR1, CELULAR2)
@@ -556,7 +556,52 @@ VALUES
 ('Michel', 'Henrique Silva', 'M', '1980-07-24', 'Médico Pediatra', 55, 'M', '(555) 555-5050'),
 ('Leonardo', 'Vitorino', 'M', '1983-03-21', 'Médico Obstetra', 33, 'M', '(555) 555-6060');
 
-/*POVOAÇÃO DOS ENDEREÇOS EXTERNOS*/
+
+/*SEGUNDA POVOAÇÃO DOS EXTERNOS (MÉDICOS, COLABORADORES E FORNECEDORES EXTERNOS)*/
+
+#COLABORADORES
+INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, CARGO_ESPECIALIDADE, CD_DEPARTAMENTO, CD_TIPO_CARGO, TELEFONE, CELULAR1, CELULAR2)
+VALUES
+('Ana', 'Souza', 'F', '1985-08-25', 'Analista de Suprimentos', 1, 'C', '(555) 4567-8901', '95678-9012', '91234-5678'),
+('Pedro', 'Oliveira', 'M', '1992-03-10', 'Analista Administrativo de Arquivo', 4, 'C', '(555) 7890-1234', '95678-9012', '92345-6789'),
+('Mariana', 'Ribeiro', 'F', '1988-11-05', 'Auxiliar Administrativo', 2, 'C', '(555) 2345-6789', '92345-6789', '91234-5678'),
+('Carlos', 'Ferreira', 'M', '1977-07-20', 'Analista de Autorizações', 6, 'C', '(555) 8901-2345', '91234-5678', '92345-6789'),
+('Isabela', 'Santos', 'F', '1999-02-12', 'Enfermeira', 7, 'C', '(555) 6789-0123', '92345-6789', '95678-9012'),
+('Felipe', 'Almeida', 'M', '1983-12-30', 'Técnico de Enfermagem CME', 9, 'C', '(555) 3456-7890', '95678-9012', '91234-5678'),
+('Letícia', 'Lima', 'F', '1972-09-17', 'Coordenador de Mercado e Relacionamento', 11, 'C', '(555) 9012-3456', '91234-5678', '92345-6789'),
+('Rafael', 'Gomes', 'M', '1986-06-22', 'Comprador', 12, 'C', '(555) 5678-9012', '95678-9012', '91234-5678'),
+('Sofia', 'Castro', 'F', '1997-04-07', 'Psicóloga', 16, 'C', '(555) 7890-1234', '92345-6789', '95678-9012'),
+('Henrique', 'Barbosa', 'M', '1979-10-03', 'Auxiliar de Atendimento', 18, 'C', '(555) 2345-6789', '91234-5678', '92345-6789');
+--
+#FORNECEDORES
+INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, CD_TIPO_CARGO, TELEFONE)
+VALUES
+('Laura', 'Pereira', 'F', '1990-08-19', 'F', '(555) 8901-2345'),
+('Guilherme', 'Fernandes', 'M', '1981-05-13', 'F', '(555) 6789-0123'),
+('Camila', 'Martins', 'F', '1975-01-28', 'F', '(555) 3456-7890'),
+('Marcelo', 'Rocha', 'M', '1993-11-09', 'F', '(555) 9012-3456'),
+('Amanda', 'Cardoso', 'F', '1989-07-24', 'F', '(555) 5678-9012'),
+('Vitor', 'Carvalho', 'M', '1978-04-11', 'F', '(555) 7890-1234'),
+('Julia', 'Ferreira', 'F', '1991-09-02', 'F', '(555) 2345-6789'),
+('Gabriel', 'Sousa', 'M', '1982-06-14', 'F', '(555) 8901-2345'),
+('Raquel', 'Gonçalves', 'F', '1998-02-05', 'F', '(555) 6789-0123'),
+('Marcos', 'Alves', 'M', '1984-12-31', 'F', '(555) 3456-7890');
+--
+#MÉDICOS
+INSERT INTO EXTERNO (NOME, SOBRENOME, SEXO, DATA_NASCIMENTO, CARGO_ESPECIALIDADE, CD_DEPARTAMENTO, CD_TIPO_CARGO, TELEFONE)
+VALUES
+('Bruna', 'Oliveira', 'F', '1973-09-16', 'Coordenador Médico', 53, 'M', '(555) 9012-3456'),
+('Leonardo', 'Ribeiro', 'M', '1987-06-21', 'Médico Obstetra', 33, 'M', '(555) 5678-9012'),
+('Larissa', 'Santos', 'F', '1996-04-08', 'Médica Pediatra', 56, 'M', '(555) 7890-1234'),
+('Gustavo', 'Silva', 'M', '1980-10-02', 'Médico Cirurgião', 53, 'M', '(555) 2345-6789'),
+('Thais', 'Ferreira', 'F', '1989-08-18', 'Médico Radiologista', 49, 'M', '(555) 8901-2345'),
+('Diego', 'Almeida', 'M', '1982-05-12', 'Médico Patologista Clinico/Medicina', 7, 'M', '(555) 6789-0123'),
+('Carolina', 'Lima', 'F', '1974-01-27', 'Médico Patologista Clinico/Medicina', 7, 'M', '(555) 3456-7890'),
+('Eduardo', 'Gomes', 'M', '1994-11-10', 'Médico Patologista Clinico/Medicina', 10, 'M', '(555) 9012-3456'),
+('Fernanda', 'Castro', 'F', '1989-07-23', 'Médico Patologista Clinico/Medicina', 10, 'M', '(555) 5678-9012'),
+('Alex', 'Barbosa', 'M', '1983-04-10', 'Médico Pediatra', 55, 'M', '(555) 7890-1234');
+
+/*PRIMEIRA POVOAÇÃO DOS ENDEREÇOS EXTERNOS*/
 
 INSERT INTO ENDERECO_EXTERNO (CD_EXTERNO, ESTADO, MUNICIPIO, BAIRRO)
 VALUES
@@ -565,3 +610,18 @@ VALUES
 ('8', 'Rio Grande do Sul', 'Porto Alegre', 'Ilha do Pavão' ),
 ('9', 'Santa Catarina', 'Nova Erechim', 'Morada do Sol'),
 ('10', 'Santa Catarina', 'Criciúma', 'Santa Luzia');
+
+/*SEGUNDA POVOAÇÃO DOS ENDEREÇOS EXTERNOS*/
+
+INSERT INTO ENDERECO_EXTERNO (CD_EXTERNO, ESTADO, MUNICIPIO, BAIRRO)
+VALUES
+('26', 'São Paulo', 'São Paulo', 'Centro'),
+('27', 'Rio de Janeiro', 'Rio de Janeiro', 'Copacabana'),
+('28', 'Minas Gerais', 'Belo Horizonte', 'Savassi'),
+('29', 'Bahia', 'Salvador', 'Barra'),
+('30', 'Amazonas', 'Manaus', 'Parque 10'),
+('31', 'Pernambuco', 'Recife', 'Boa Viagem'),
+('32', 'Paraná', 'Curitiba', 'Batel'),
+('33', 'Goiás', 'Goiânia', 'Setor Bueno'),
+('34', 'Ceará', 'Fortaleza', 'Meireles'),
+('35', 'Rio Grande do Sul', 'Porto Alegre', 'Moinhos de Vento');
