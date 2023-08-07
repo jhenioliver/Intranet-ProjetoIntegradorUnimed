@@ -14,209 +14,19 @@
             <a href="intranet.php"><img src="img/voltar.png" alt="" class="imgVoltarIntranet"><p>Voltar ao Intranet</p></a>
         </div>
     </section>
-<!-- =================================================================================================== -->
     <section name="conteudoAniversariantes" id="" class="conteudoAniversariantes">
         <div name="txtAniversarianteSoMes" id="" class="txtAniversarianteSoMes">
             <p>Aniversariantes do Mês</p>
         </div>
-
-        <section name="boxAniversariantesDoMes" id="" class="boxAniversariantesDoMes"> 
-            <section name="linhasAniversariantes" id="" class="linhasAniversariantes">
-                <div name="dataAnaiversario" id="" class="dataAnaiversario">
-                    <p class="txtLista">10/07</p>
-                </div>
-            <hr class="divisaoElementosAniversariantes">
-                <div name="infoNomeColaboradorAniversario" id="" class="infoNomeColaboradorAniversario">
-                    <p class="txtLista">Beltrano</p>
-                </div>
-            <hr class="divisaoElementosAniversariantes">
-                <div name="infoSetorColaboradorAniversario" id="" class="infoSetorColaboradorAniversario">
-                    <p class="txtLista">UNIDADE DE INTERNACAO CIRURGICA - 3? PAVIMENTO</p>
-                </div>
-            </section>
-
-<!-- exemplos -->
-
-<section name="linhasAniversariantes" id="" class="linhasAniversariantes">
-    <div name="dataAnaiversario" id="" class="dataAnaiversario">
-        <p class="txtLista">10/07</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoNomeColaboradorAniversario" id="" class="infoNomeColaboradorAniversario">
-        <p class="txtLista">Beltrano</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoSetorColaboradorAniversario" id="" class="infoSetorColaboradorAniversario">
-        <p class="txtLista">Setor</p>
-    </div>
-</section>
-
-<section name="linhasAniversariantes" id="" class="linhasAniversariantes">
-    <div name="dataAnaiversario" id="" class="dataAnaiversario">
-        <p class="txtLista">10/07</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoNomeColaboradorAniversario" id="" class="infoNomeColaboradorAniversario">
-        <p class="txtLista">Beltrano</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoSetorColaboradorAniversario" id="" class="infoSetorColaboradorAniversario">
-        <p class="txtLista">Setor</p>
-    </div>
-</section>
-
-<section name="linhasAniversariantes" id="" class="linhasAniversariantes">
-    <div name="dataAnaiversario" id="" class="dataAnaiversario">
-        <p class="txtLista">10/07</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoNomeColaboradorAniversario" id="" class="infoNomeColaboradorAniversario">
-        <p class="txtLista">Beltrano</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoSetorColaboradorAniversario" id="" class="infoSetorColaboradorAniversario">
-        <p class="txtLista">Setor</p>
-    </div>
-</section>
-
-<section name="linhasAniversariantes" id="" class="linhasAniversariantes">
-    <div name="dataAnaiversario" id="" class="dataAnaiversario">
-        <p class="txtLista">10/07</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoNomeColaboradorAniversario" id="" class="infoNomeColaboradorAniversario">
-        <p class="txtLista">Beltrano</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoSetorColaboradorAniversario" id="" class="infoSetorColaboradorAniversario">
-        <p class="txtLista">Setor</p>
-    </div>
-</section>
-
-<section name="linhasAniversariantes" id="" class="linhasAniversariantes">
-    <div name="dataAnaiversario" id="" class="dataAnaiversario">
-        <p class="txtLista">10/07</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoNomeColaboradorAniversario" id="" class="infoNomeColaboradorAniversario">
-        <p class="txtLista">Beltrano</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoSetorColaboradorAniversario" id="" class="infoSetorColaboradorAniversario">
-        <p class="txtLista">Setor</p>
-    </div>
-</section>
-
-<section name="linhasAniversariantes" id="" class="linhasAniversariantes">
-    <div name="dataAnaiversario" id="" class="dataAnaiversario">
-        <p class="txtLista">10/07</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoNomeColaboradorAniversario" id="" class="infoNomeColaboradorAniversario">
-        <p class="txtLista">Beltrano</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoSetorColaboradorAniversario" id="" class="infoSetorColaboradorAniversario">
-        <p class="txtLista">Setor</p>
-    </div>
-</section>
-
-<section name="linhasAniversariantes" id="" class="linhasAniversariantes">
-    <div name="dataAnaiversario" id="" class="dataAnaiversario">
-        <p class="txtLista">10/07</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoNomeColaboradorAniversario" id="" class="infoNomeColaboradorAniversario">
-        <p class="txtLista">Beltrano</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoSetorColaboradorAniversario" id="" class="infoSetorColaboradorAniversario">
-        <p class="txtLista">Setor</p>
-    </div>
-</section>
-
-<section name="linhasAniversariantes" id="" class="linhasAniversariantes">
-    <div name="dataAnaiversario" id="" class="dataAnaiversario">
-        <p class="txtLista">10/07</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoNomeColaboradorAniversario" id="" class="infoNomeColaboradorAniversario">
-        <p class="txtLista">Beltrano</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoSetorColaboradorAniversario" id="" class="infoSetorColaboradorAniversario">
-        <p class="txtLista">Setor</p>
-    </div>
-</section>
-
-<section name="linhasAniversariantes" id="" class="linhasAniversariantes">
-    <div name="dataAnaiversario" id="" class="dataAnaiversario">
-        <p class="txtLista">10/07</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoNomeColaboradorAniversario" id="" class="infoNomeColaboradorAniversario">
-        <p class="txtLista">Beltrano</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoSetorColaboradorAniversario" id="" class="infoSetorColaboradorAniversario">
-        <p class="txtLista">Setor</p>
-    </div>
-</section>
-
-
-<section name="linhasAniversariantes" id="" class="linhasAniversariantes">
-    <div name="dataAnaiversario" id="" class="dataAnaiversario">
-        <p class="txtLista">10/07</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoNomeColaboradorAniversario" id="" class="infoNomeColaboradorAniversario">
-        <p class="txtLista">Beltrano</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoSetorColaboradorAniversario" id="" class="infoSetorColaboradorAniversario">
-        <p class="txtLista">Setor</p>
-    </div>
-</section>
-
-
-
-<section name="linhasAniversariantes" id="" class="linhasAniversariantes">
-    <div name="dataAnaiversario" id="" class="dataAnaiversario">
-        <p class="txtLista">10/07</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoNomeColaboradorAniversario" id="" class="infoNomeColaboradorAniversario">
-        <p class="txtLista">Beltrano</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoSetorColaboradorAniversario" id="" class="infoSetorColaboradorAniversario">
-        <p class="txtLista">Setor</p>
-    </div>
-</section>
-
-
-<section name="linhasAniversariantes" id="" class="linhasAniversariantes">
-    <div name="dataAnaiversario" id="" class="dataAnaiversario">
-        <p class="txtLista">10/07</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoNomeColaboradorAniversario" id="" class="infoNomeColaboradorAniversario">
-        <p class="txtLista">Beltrano</p>
-    </div>
-<hr class="divisaoElementosAniversariantes">
-    <div name="infoSetorColaboradorAniversario" id="" class="infoSetorColaboradorAniversario">
-        <p class="txtLista">Setor</p>
-    </div>
-</section>
-
-        
-
-        </section>
-
-        
-
+<!-- ----------------------AQUI JHENIFFER------------------------ -->
+            <table class="tabelaAniversariantes">
+                <tr class="linhaTabelaAniversariantes">
+                    <th class="colunaDataAniversariantes">data</th>
+                    <th class="ColunaNomeAniversariantes">nome</th>
+                    <th class="ColunaSetorAniversariantes">setor</th>
+                </tr>
+            </table>
     </section>
-=
 <footer>
     <div name="footercenter" id="" class="footercenter">
        <section name="localizacaoUnimed" id="" class="localizacaoUnimed">
@@ -231,30 +41,21 @@
             </a>
             </div>
        </section>
-
        <section name="boxContatos" id="" class="boxContatos">
             <p name="txtContatos" id="" class="txtContatos">Siga nossas redes sociais:</p>
             <section name="iconsContatos" id="" class="iconsContatos">
-
                    <div name="iconsredessociais" id="" class="iconsRedesSociais"><a href="https://www.facebook.com/unimed.chapeco" title="facebook" target="_new"><img draggable="false" src="img/ico_facebook.svg" alt="iconfacebook"></a></div>
-
                     <div name="iconsRedesSociais" id="" class="iconsRedesSociais"><a href="https://www.instagram.com/unimed.chapeco/" title="instagram" target="_new"><img draggable="false" src="img/ico_instagram.svg" alt="iconintagram"></a></div>
-
                     <div name="iconsredessociais" id="" class="iconsRedesSociais"><a href="https://www.youtube.com/channel/UCGeen4o2xuq4eAakeyv8LyA" title="youtube" target="_new"><img draggable="false" src="img/ico_youtube.svg" alt="iconyoutube"></a></div>
-
                     <div name="iconsredessociais" id="" class="iconsRedesSociais"><a href="https://br.linkedin.com/company/unimed-chapeco" title="linkedin" target="_new"><img draggable="false" src="img/ico_linkedin.svg" alt="iconlikedin"></a></div>
-            
-            
             </section>
        </section>
     </div>
-
     <section name="copyright" class="copyright">
         <a href="#" title="Política de utilização da rede" target="_new"><p name="politicaderede" style="font-weight: bold">Política de utilização da rede</p></a>
         <p>|</p>
         <p name="2023copyright">2023 Copyright - Todos os direitos reservados.</p>
     </section>
-</footer> 
+</footer>
 </body>
 </html>
-<!-- name="" id="" class="" -->

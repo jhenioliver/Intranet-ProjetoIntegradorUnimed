@@ -12,6 +12,7 @@ a, h1{
     text-decoration: none;
 }
 
+
 /*-----===HEADER===-----*/
 header{
     width: 100%;
@@ -110,7 +111,9 @@ header{
     background-color: #32AC7B;
 }
 
+
 /*-----===CONTEUDO===-----*/
+
 
 /*--container--*/
 .conteudo{
@@ -171,8 +174,8 @@ div nav ul hr{
     transform: rotate(90deg);
     width: 20px;
 }
-
 /*-----===SIGLARIO===-----*/
+
 
 /*-----===PESQUISA SIGARIOS===-----*/
 .boxSiglas{
@@ -187,6 +190,7 @@ div nav ul hr{
     flex-wrap: wrap;
     gap: 1%;
     box-shadow: 0px 3px 3px #EAE2D8;
+    border: 1px solid #EAE2D8;
 }
 .boxTiposSigSen{
     width: 25%;
@@ -195,6 +199,7 @@ div nav ul hr{
     border-radius: 7px;
     border: 2px solid #00524C;
     margin-left: 4px;
+
 
     display: flex;
     flex-direction: column;
@@ -205,6 +210,7 @@ div nav ul hr{
     /* background-color: red; */
     width: 99%;
     height: 49%;
+
 
     display: flex;
     flex-direction: row;
@@ -218,6 +224,7 @@ div nav ul hr{
     border-radius: 7px;
     font-weight: bold;
 
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -225,6 +232,7 @@ div nav ul hr{
 .paginaPesquisarPorSentenças :hover{
     color: #00524C;
 }
+
 
 .divisaoSiglasSentenças{
     background-color: white;
@@ -236,6 +244,7 @@ div nav ul hr{
     width: 99%;
     height: 49%;
 
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -246,7 +255,7 @@ div nav ul hr{
     height: 80%;
     /* background-color: brown; */
     font-weight: bold;
-    
+   
     display: flex;
     justify-content: center;
     align-items: center;
@@ -259,6 +268,7 @@ div nav ul hr{
     width: 70%;
     height: 120px;
     /* background-color: #a8ffd3; */
+
 
     display: flex;
     flex-direction: column;
@@ -291,14 +301,122 @@ div nav ul hr{
     flex-wrap: nowrap;
     gap: 10px;
     box-shadow: 0px 3px 3px #EAE2D8;
+    border: 1px solid #EAE2D8;
 }
+
+
+.tabelaSiglas{
+    width: 99%;
+    height: 99%;
+    gap: 10px;
+}
+/* header */
+.linhaHeader{
+    height: 8%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.colunaHeaderS{
+    background-color: #00985D;
+    width: 20%;
+    height: 99%;
+    border: none;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.colunaHeaderD{
+    background-color: #00985D;
+    width: 65%;
+    height: 99%;
+    border: none;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.colunaHeaderU{
+    background-color: #00985D;
+    width: 15%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+/* corpo */
+.linhaCorpo{
+    background-color: #EAE2D8;
+    color: #00524C;
+    height: 8%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+.colunaCorpoS{
+    color: #00524C;
+    width: 20%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.colunaCorpoD{
+    color: #00524C;
+    width: 65%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.colunaCorpoU{
+    color: #00524C;
+    width: 15%;
+    height: 99%;
+    border: none;
+    text-align: center;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
 
 
 /*-----===Paginas Agenda===-----*/
 .boxPaginasAgenda{
     width: 30%;
     height: 40px;
-    background-color: #EAE2D8;
+    background-color: #F5F2EB;
     border: 2px solid #DEC4BB;
     border-radius: 5px;
     display: flex;
@@ -348,6 +466,7 @@ div nav ul hr{
     color: black;
 }
 
+
 /*-----===FOOTER===-----*/
 footer{
     width: 100%;
@@ -380,6 +499,7 @@ footer{
     align-items: center;
     gap: 10px;
 
+
 }
 .iconLocUnimed img{
     width: 40px;
@@ -394,7 +514,7 @@ footer{
     justify-content: center;
     align-items: center;
     gap: 5px;
-    
+   
 }
 .txtContatos{
     text-align: center;
@@ -439,6 +559,9 @@ footer{
 .copyright p{
     color: #00524C;
 }
+
+
+
 
 
 

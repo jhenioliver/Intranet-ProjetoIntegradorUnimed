@@ -3,6 +3,8 @@
     if(empty($_SESSION)){
         print "<script>location.href='index.php';</script>";
     }
+
+    include("config.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,18 +17,20 @@
     <link rel="stylesheet" href="siglario_Sig.css">
 </head>
 
+
 <body>
 <!--HEADER-->
 <header>
         <div class="header">
             <a href="https://www.unimed.coop.br/site/web/chapeco"><img draggable="false" name="" id="" class="headerImgLogo" src="img/logo_unimed.png" alt=""></a>
 
-        
+
+       
             <div class="form">
                 <input type="text" name="barraDePesquisa" id="search-input" class="headerBarraDePesquisa" accesskey="p" placeholder="Faça a sua Pesquisa..." type="search">
                 <button class="searchbtn" onclick="searchText()">Pesquisar</button>
             </div>
-            
+           
             <div name="usuario" id="usuario" class="usuario">
                 <h1 name="nomeUsuario" id="nomeusuario" class="headerNomeUsuario">
                     <?php
@@ -34,15 +38,18 @@
                     ?>
                 </h1>
 
+
                 <img draggable="false" name="imgUsuario" id="imgusuario" class="headerImgUsuario" src="img/perfil.png" alt="">
+
 
                 <?php
                     print "<button accesskey='s' class='btnSair'><a href='logout.php'>Sair</a></button>";
                 ?>
             </div>
 
-            
-        </div> 
+
+           
+        </div>
    </header>
 <!--CONTEUDO-->
 <div name="conteudo" id="conteudo" class="conteudo">
@@ -140,7 +147,20 @@
     </section>
 <!-- tabela siglario -->
     <section name="boxsiglario" id="" class="boxsiglario">
-    
+        <table class="tabelaSiglas">
+            <!-- header -->
+            <tr class="linhaHeader">
+                <th class="colunaHeaderS">SIGLAS</th>
+                <th class="colunaHeaderD">DESCRIÇÃO</th>
+                <th class="colunaHeaderU">USAR</th>
+            </tr>
+            <!-- corpo -->
+            <tr class="linhaCorpo">
+                <th class="colunaCorpoS">tdah</th>
+                <th class="colunaCorpoD">lucas</th>
+                <th class="colunaCorpoU">sim</th>
+            </tr>
+        </table>
     </section>
 <!-- paginacao -->
     <section name="boxPaginasAgenda" id="" class="boxPaginasAgenda">
@@ -159,6 +179,7 @@
             <input value="" title="pgDireita" name="botaoPassarPgDireita" id="" class="botaoPassarPgDireita" type="button" placeholder="d">
     </section>
 
+
 </div>
 <!--FOOTER-->
 <footer>
@@ -176,29 +197,35 @@
             </div>
        </section>
 
+
        <section name="boxContatos" id="" class="boxContatos">
             <p name="txtContatos" id="" class="txtContatos">Siga nossas redes sociais:</p>
             <section name="iconsContatos" id="" class="iconsContatos">
 
+
                     <div name="iconsredessociais" id="" class="iconsRedesSociais"><a href="https://www.facebook.com/unimed.chapeco" title="facebook" target="_new"><img draggable="false" src="img/ico_facebook.svg" alt="iconfacebook"></a></div>
+
 
                     <div name="iconsRedesSociais" id="" class="iconsRedesSociais"><a href="https://www.instagram.com/unimed.chapeco/" title="instagram" target="_new"><img draggable="false" src="img/ico_instagram.svg" alt="iconintagram"></a></div>
 
+
                     <div name="iconsredessociais" id="" class="iconsRedesSociais"><a href="https://www.youtube.com/channel/UCGeen4o2xuq4eAakeyv8LyA" title="youtube" target="_new"><img draggable="false" src="img/ico_youtube.svg" alt="iconyoutube"></a></div>
 
+
                     <div name="iconsredessociais" id="" class="iconsRedesSociais"><a href="https://br.linkedin.com/company/unimed-chapeco" title="linkedin" target="_new"><img draggable="false" src="img/ico_linkedin.svg" alt="iconlikedin"></a></div>
-            
-            
+           
+           
             </section>
        </section>
     </div>
+
 
     <section name="copyright" class="copyright">
         <a href="#" title="Política de utilização da rede" target="_new"><p name="politicaderede" style="font-weight: bold">Política de utilização da rede</p></a>
         <p>|</p>
         <p name="2023copyright">2023 Copyright - Todos os direitos reservados.</p>
     </section>
-</footer> 
+</footer>
     <script src="main.js"></script>
 </body>
 </html>

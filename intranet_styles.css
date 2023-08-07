@@ -1,6 +1,4 @@
-/*Imports*/
 @import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
-/*Gerais*/
 *{
     color: white;
     font-family: 'Roboto', sans-serif;
@@ -11,8 +9,6 @@
 a, h1{
     text-decoration: none;
 }
-/*--CORPO--*/
-/*-----===HEADER===-----*/
 header{
     width: 100%;
     height: 75px;
@@ -28,9 +24,7 @@ header{
     align-content: center;
     margin-top: 4px;
     margin-bottom: 5px;
-    
 }
-/*Header Elementos*/
 .headerImgLogo{
     height: 60px;
     border: 2px solid white;
@@ -66,9 +60,8 @@ header{
     background-color: #32AC7B;
 }
 .boxvpn{
-    width: 15%;
+    width: 17%;
     height: 40px;
-
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -76,7 +69,6 @@ header{
     align-items: center;
     justify-content: center;
     text-align: center;
-    
 }
 .boxVpnColaboradores{
     width: 49%;
@@ -88,8 +80,9 @@ header{
     border-right: 1px solid #00524C;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .boxVpnColaboradores:hover{
     background-color: #00524C;
@@ -112,6 +105,9 @@ header{
     border-right: 2px solid #00524C;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .boxVpnManual:hover{
     background-color: #00524C;
@@ -170,8 +166,6 @@ header{
 .btnSair a:hover{
     background-color: #32AC7B;
 }
-/*-----===CONTEUDO===-----*/
-/*--container--*/
 .conteudo{
     display: flex;
     flex-direction: column;
@@ -181,9 +175,7 @@ header{
     align-content: center;
     margin: 5px auto 0;
 }
-/*-----SISTEMAS/CONTAINER2-----*/
 .sistema_container2{
-    /* background-color: #000000; */
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -193,7 +185,6 @@ header{
     gap: 10px;
     margin: 5px auto 0;
 }
-/*-----===SISTEMAS===-----*/
 .boxSistemas {
     width: 220px;
     background-color: #00985D;
@@ -208,7 +199,6 @@ header{
     align-content: center;
     padding: 12px 0px 12px 0px;
 }
-/*Sistemas Elementos*/
 .blocosvpn{
     width: 92%;
     height: 40px;
@@ -240,7 +230,6 @@ header{
 .blocossis a{
     color: white;
 }
-/*--container--*/
 .container2 {
     width: 790px;
     display: flex;
@@ -251,7 +240,6 @@ header{
     align-content: center;
     gap: 10px;
 }
-/*-----===NAVEGAÇÃO===-----*/
 .navegacao {
     width: 790px;
     height: 50px;
@@ -259,7 +247,6 @@ header{
     border: 2px solid #00524C;
     border-radius: 3px;
 }
-/*Navegação Elementos*/
 .nav-list{
     min-height: 50px;
     display: flex;
@@ -282,6 +269,7 @@ nav ul li a:hover {
     color: #00524C;
     transition: all .2s ease-in-out;
 
+
 }
 .pgatual {
     background-color: #00524C;
@@ -290,29 +278,26 @@ nav ul li a:hover {
 .pgatual a:hover {
     color: white;
 
+
 }
 section nav ul hr{
     transform: rotate(90deg);
     width: 20px;
 }
-/*-----===BANNER===-----*/
 .banner {
     width: 790px;
-    height: 233px;
+    height: 235px;
     background-color: #00985D;
     border: 2px solid #00524C;
     border-radius: 3px;
 }
-/*Banners Elementos*/
 .banner img {
     width: 100%;
     height: 100%;
 }
-
-/*-----===PRINCIPAIS===-----*/
 .principaisSistemas{
     width: 790px;
-    height: 295px;
+    height: 330px;
     background-color: #F5F2EB;
     border: 1px solid #EAE2D8;
     border-radius: 5px;
@@ -324,14 +309,12 @@ section nav ul hr{
     align-content: center;
     gap: 14px;
 }
-
-/*Principais Elementos*/
 .boxPainelDeGestaoSenior{
     width: 220px;
     height: 140px;
     background-color: #94D5DB;
     border-radius: 4px;
-    border: 2px solid #337470;
+    border: 2px solid #a4d8de;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -347,7 +330,6 @@ section nav ul hr{
     width: 90px;
     height: 120px;
 }
-
 .boxSistemaDeGestao{
     width: 220px;
     height: 140px;
@@ -369,7 +351,6 @@ section nav ul hr{
     width: 120px;
     height: 120px;
 }
-
 .boxIntratarefas{
     width: 220px;
     height: 140px;
@@ -391,7 +372,6 @@ section nav ul hr{
     width: 120px;
     height: 120px;
 }
-
 .boxWebMail{
     width: 220px;
     height: 140px;
@@ -413,7 +393,6 @@ section nav ul hr{
     width: 120px;
     height: 120px;
 }
-
 .boxBlip{
     width: 220px;
     height: 140px;
@@ -435,7 +414,6 @@ section nav ul hr{
     width: 120px;
     height: 120px;
 }
-
 .boxNutricao{
     width: 220px;
     height: 140px;
@@ -457,7 +435,6 @@ section nav ul hr{
     width: 120px;
     height: 120px;
 }
-
 .principais div a{
     font-size: 14px;
     display: flex;
@@ -470,24 +447,10 @@ section nav ul hr{
     align-items: end;
     justify-content: center;
 }
-
-/*-----===DATA===-----*/
-.data {
-    width: 790px;
-    height: 22px;
-    background-color: #00985D;
-    margin-bottom: 7px;
-    border-radius: 3px;
-    border: 2px solid #00524C;
-}
 p#clock{
     padding: 1px;
     text-align: center;
 }
-
-
-
-/*Aniversariantes HEADER*/
 .headerAniversario{
     width: 1020px;
     height: 40px;
@@ -498,9 +461,8 @@ p#clock{
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-top: 5px;
 }
-
-/*Aniversariantes HEADER elementos*/
 .iconHeaderAniversario_ADD{
     display: flex;
     flex-direction: row;
@@ -528,15 +490,12 @@ p#clock{
 .listaCompleta{
     margin-right: 15px;
     font-weight: bold;
-    text-decoration: underline;
     transition: all .10% ease-in-out;
 }
 .listaCompleta a:hover{
     color: #00985D;
     transition: all .10% ease-in-out;
 }
-
-/*-----===ANIVERSARIANTES===-----*/
 .boxAniversariantes {
     width: 1020px;
     height: 235px;
@@ -551,12 +510,9 @@ p#clock{
     gap: 40px;
     margin-bottom: 7px;
 }
-
-/*Aniversariantes Elementos*/
 .perfilAniversariante{
     width: 15%;
     height: 95%;
-    /* border: 1px solid rgb(99, 0, 66); */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -603,8 +559,6 @@ p#clock{
     font-size: 19px;
     color: black;
 }
-
-/*-----===FOOTER===-----*/
 footer{
     width: 100%;
     background-color: white;
@@ -618,7 +572,6 @@ footer{
     border-right: 0px;
     border-left: 0px;
     border-bottom: 0px;
-   
     border-color: #00524C;
 }
 .footercenter{
@@ -635,7 +588,6 @@ footer{
     justify-content: center;
     align-items: center;
     gap: 10px;
-
 }
 .iconLocUnimed img{
     width: 40px;
@@ -650,7 +602,6 @@ footer{
     justify-content: center;
     align-items: center;
     gap: 5px;
-    
 }
 .txtContatos{
     text-align: center;
@@ -695,10 +646,6 @@ footer{
 .copyright p{
     color: #00524C;
 }
-
-
-
-
 .modal{
     width: 600px;
     height: 500px;
@@ -728,7 +675,6 @@ footer{
 .infoAcessibilidade{
     width: 100%;
     height: 33%;
-    /* border: 1px solid #000000; */
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -738,7 +684,6 @@ footer{
 .txtAcessibilidade{
     width: 48%;
     height: 100%;
-    /* border: 1px solid #1D9908; */
     text-align: justify;
 }
 .txtAcessibilidade p{
@@ -754,7 +699,6 @@ footer{
 .txtcomoUsar{
     width: 48%;
     height: 100%;
-    /* border: 1px solid #990808; */
     text-align: justify;
 }
 .txtcomoUsar p{
