@@ -184,7 +184,7 @@
 
                 $limite = 10;
                 $inicio = ($pagina * $limite) - $limite;
-
+                $pesquisa = '';
                 $registros = $conn->query($sql_code_siglario)->num_rows;
                 $total_paginas = ceil($registros/$limite);
                 $sql_code_siglario .= " LIMIT $inicio, $limite";
@@ -216,9 +216,7 @@
 
                 $limite = 10;
                 $inicio = ($pagina * $limite) - $limite;
-                
                 $pesquisa = $_GET['search_pesquisa'];
-
                 $sql_code_siglario .= " WHERE SIGLA LIKE '%$pesquisa%'";
                 $registros = $conn->query($sql_code_siglario)->num_rows;
                 $total_paginas = ceil($registros/$limite);
@@ -247,8 +245,6 @@
 <!-- paginacao -->
     <section name="boxPaginasAgenda" id="" class="boxPaginasAgenda">
     <?php
-        if(!empty($_GET['pagina']) || isset($_GET['pagina'])){
-
         if ($pagina > 1) { ?>
         <a href="<?php echo 'siglario_Sig.php?search_pesquisa='.$pesquisa.'&pagina='.$pagina - 1 ?>" class="paginasAgenda">
         <
@@ -270,10 +266,8 @@
         <a href="<?php echo 'siglario_Sig.php?search_pesquisa='.$pesquisa.'&pagina='.$pagina + 1 ?>"  class="paginasAgenda">
         >
         </a>
-        <?php } } ?>
+        <?php } ?>
     </section>
-
-
 </div>
 <!--FOOTER-->
 <footer>
