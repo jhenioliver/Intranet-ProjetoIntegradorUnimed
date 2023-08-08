@@ -3,6 +3,8 @@
     if(empty($_SESSION)){
         print "<script>location.href='index.php';</script>";
     }
+
+    include("config.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -140,9 +142,24 @@
         <hr class="divisaoTiposProcurar">
         <div name="boxProcurarPor" id="" class="boxProcurarPor">
             <div name="pesquisarPorSentenças" id="" class="pesquisarPorSentenças">Pesquisar por Sentenças:</div>
-            <input name="searchSentenças" id="searchSentenças" class="searchSentenças" type="search" placeholder="🔍Buscar">
+            <input name="searchSentenças" id="searchSentenças" class="searchSentenças" type="search" value="<?php if(isset($_GET['search_pesquisa'])) echo $_GET['search_pesquisa']; ?>" placeholder="🔍Buscar">
         </div>
     </section>
+    <script>
+            var search_pesquisa = document.getElementById('searchSentenças');
+
+            search_pesquisa.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") 
+                {
+                    searchPesquisa();
+                }
+            });
+
+            function searchPesquisa()
+                {
+                    window.location = 'siglario_Sen.php?search_pesquisa='+search_pesquisa.value+'&pagina=1';
+                }
+        </script>
 <!-- tabela sentenças -->
     <section name="boxsiglario" id="" class="boxsiglario">
     <table class="tabelaSiglas">
@@ -152,32 +169,105 @@
                 <th class="colunaHeaderD">DESCRIÇÃO</th>
                 <th class="colunaHeaderU">USAR</th>
             </tr>
-            <!-- corpo -->
-            <tr class="linhaCorpo">
-                <th class="colunaCorpoS">tdah</th>
-                <th class="colunaCorpoD">lucas</th>
-                <th class="colunaCorpoU">sim</th>
-            </tr>
+            <?php
+
+            $sql_code_siglario = "SELECT SIGLA, DESCRICAO, USO FROM SIGLARIO";
+            
+            if(!isset($_GET['search_pesquisa']) || empty($_GET['search_pesquisa'])){
+                $pagina = 1;
+                if(isset($_GET['pagina'])){
+                    $pagina = filter_input(INPUT_GET, "pagina", FILTER_VALIDATE_INT);
+                }                    
+                    if(!$pagina || empty($_GET['pagina'])){
+                        $pagina = 1;
+                    }
+
+                $limite = 10;
+                $inicio = ($pagina * $limite) - $limite;
+                $pesquisa = '';
+                $registros = $conn->query($sql_code_siglario)->num_rows;
+                $total_paginas = ceil($registros/$limite);
+                $sql_code_siglario .= " LIMIT $inicio, $limite";
+                $sql_query_siglario = $conn->query($sql_code_siglario) or die ("ERRO ao consultar" . $conn->error);
+
+                if($sql_query_siglario->num_rows == 0){ ?>
+                    <tr class="linhaCorpo">
+                        <th class="colunaCorpoS">Nenhum resultado encontrado...</th>
+                    </tr>
+                <?php }
+                    else{
+                        while($dados = $sql_query_siglario->fetch_assoc()){ ?>
+                        <tr class="linhaCorpo">
+                            <th class="colunaCorpoS"><?php echo $dados['SIGLA']; ?></th>
+                            <th class="colunaCorpoD"><?php echo $dados['DESCRICAO']; ?></th>
+                            <th class="colunaCorpoU"><?php echo $dados['USO']; ?></th>
+                        </tr>
+                        <?php }
+                    }
+            }
+            elseif(isset($_GET['search_pesquisa']) || !empty($_GET['search_pesquisa'])){
+                $pagina = 1;
+                if(isset($_GET['pagina'])){
+                    $pagina = filter_input(INPUT_GET, "pagina", FILTER_VALIDATE_INT);
+                }                    
+                    if(!$pagina || empty($_GET['pagina'])){
+                        $pagina = 1;
+                    }
+
+                $limite = 10;
+                $inicio = ($pagina * $limite) - $limite;
+                $pesquisa = $_GET['search_pesquisa'];
+                $sql_code_siglario .= " WHERE DESCRICAO LIKE '%$pesquisa%'";
+                $registros = $conn->query($sql_code_siglario)->num_rows;
+                $total_paginas = ceil($registros/$limite);
+                $sql_code_siglario .= " LIMIT $inicio, $limite";
+                $sql_query_siglario = $conn->query($sql_code_siglario) or die ("ERRO ao consultar" . $conn->error);
+
+                if($sql_query_siglario->num_rows == 0){ ?>
+                    <tr class="linhaCorpo">
+                        <th class="linhaCorpo" colspan="3">Nenhum resultado encontrado...</th>
+                    </tr>
+                <?php }
+                    else{
+                        while($dados = $sql_query_siglario->fetch_assoc()){ ?>
+                        <tr class="linhaCorpo">
+                            <th class="colunaCorpoS"><?php echo $dados['SIGLA']; ?></th>
+                            <th class="colunaCorpoD"><?php echo $dados['DESCRICAO']; ?></th>
+                            <th class="colunaCorpoU"><?php echo $dados['USO']; ?></th>
+                        </tr>
+                        <?php }
+                    }
+            }
+
+            ?>
         </table>
     </section>
 <!-- paginacao -->
     <section name="boxPaginasAgenda" id="" class="boxPaginasAgenda">
-            <input value="" title="pgEsquerda" name="botaoPassarPgEsquerda" id="" class="botaoPassarPgEsquerda" type="button" placeholder="oi" >
-            <hr class="divisaoPaginacao">
-            <div name="pg1" id="" class="paginasAgendaAtual">1</div>
-            <hr class="divisaoPaginacao">
-            <div name="pg2" id="" class="paginasAgenda">2</div>
-            <hr class="divisaoPaginacao">
-            <div name="pg3" id="" class="paginasAgenda">3</div>
-            <hr class="divisaoPaginacao">
-            <div name="pg4" id="" class="paginasAgenda">4</div>
-            <hr class="divisaoPaginacao">
-            <div name="pg5" id="" class="paginasAgenda">5</div>
-            <hr class="divisaoPaginacao">
-            <input value="" title="pgDireita" name="botaoPassarPgDireita" id="" class="botaoPassarPgDireita" type="button" placeholder="d">
+    <?php
+        if ($pagina > 1) { ?>
+        <a href="<?php echo 'siglario_Sen.php?search_pesquisa='.$pesquisa.'&pagina='.$pagina - 1 ?>" class="paginasAgenda">
+        <
+        </a>
+    <?php } 
+        
+    for ($i = 1; $i<=$total_paginas; $i++) { 
+        if ($pagina == $i){
+            $estilo = "class=\"paginasAgendaAtual\"";
+        }
+            else {
+                $estilo = "class=\"paginasAgenda\"";
+            }
+    ?>
+        <a href="<?php echo 'siglario_Sen.php?search_pesquisa='.$pesquisa.'&pagina='. $i; ?>" name="pg" <?php echo $estilo; ?> > <?php echo $i; ?> </a>
+        <?php }
+
+        if($pagina < $total_paginas){ ?>
+        <a href="<?php echo 'siglario_Sen.php?search_pesquisa='.$pesquisa.'&pagina='.$pagina + 1 ?>"  class="paginasAgenda">
+        >
+        </a>
+        <?php } ?>
     </section>
-
-
 </div>
 <!--FOOTER-->
 <footer>
