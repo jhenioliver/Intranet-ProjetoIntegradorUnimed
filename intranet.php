@@ -3,6 +3,8 @@
     if(empty($_SESSION)){
         print "<script>location.href='index.php';</script>";
     }
+
+    include("config.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -195,57 +197,38 @@
             <a href="listacompleta.php">VER LISTA COMPLETA</a>
         </div>
     </div>
+
     <div name="boxAniversariantes" id="" class="boxAniversariantes">
-        <section name="perfilAniversariante" id="" class="perfilAniversariante">
-            <div name="boxFotoColaboradores" id="" class="boxFotoColaboradores">
-                <img draggable="false" name="fotoColoborador" id="" class="noclass" src="img/perfil.png" alt="">
-            </div>
-            <div name="infoColaborador" id="" class="infoColaborador">
-                <div name="infoNomeColaborador" id="" class="infoNomeColaborador"><p>nome</p></div>
-                <div name="infoCargoColaborador" id="" class="infoCargoColaborador"><p>cargo</p></div>
-                <div name="infoSetorColaborador" id="" class="infoSetorColaborador"><p>setor</p></div>
-            </div>
-        </section>
-        <section name="perfilAniversariante" id="" class="perfilAniversariante">
-            <div name="boxFotoColaboradores" id="" class="boxFotoColaboradores">
-                <img draggable="false" name="fotoColoborador" id="" class="noclass" src="img/perfil.png" alt="">
-            </div>
-            <div name="infoColaborador" id="" class="infoColaborador">
-                <div name="infoNomeColaborador" id="" class="infoNomeColaborador"><p>nome</p></div>
-                <div name="infoCargoColaborador" id="" class="infoCargoColaborador"><p>cargo</p></div>
-                <div name="infoSetorColaborador" id="" class="infoSetorColaborador"><p>setor</p></div>
-            </div>
-        </section>
-        <section name="perfilAniversariante" id="" class="perfilAniversariante">
-            <div name="boxFotoColaboradores" id="" class="boxFotoColaboradores">
-                <img draggable="false" name="fotoColoborador" id="" class="noclass" src="img/perfil.png" alt="">
-            </div>
-            <div name="infoColaborador" id="" class="infoColaborador">
-                <div name="infoNomeColaborador" id="" class="infoNomeColaborador"><p>nome</p></div>
-                <div name="infoCargoColaborador" id="" class="infoCargoColaborador"><p>cargo</p></div>
-                <div name="infoSetorColaborador" id="" class="infoSetorColaborador"><p>setor</p></div>
-            </div>
-        </section>
-        <section name="perfilAniversariante" id="" class="perfilAniversariante">
-            <div name="boxFotoColaboradores" id="" class="boxFotoColaboradores">
-                <img draggable="false" name="fotoColoborador" id="" class="noclass" src="img/perfil.png" alt="">
-            </div>
-            <div name="infoColaborador" id="" class="infoColaborador">
-                <div name="infoNomeColaborador" id="" class="infoNomeColaborador"><p>nome</p></div>
-                <div name="infoCargoColaborador" id="" class="infoCargoColaborador"><p>cargo</p></div>
-                <div name="infoSetorColaborador" id="" class="infoSetorColaborador"><p>setor</p></div>
-            </div>
-        </section>
-        <section name="perfilAniversariante" id="" class="perfilAniversariante">
-            <div name="boxFotoColaboradores" id="" class="boxFotoColaboradores">
-                <img draggable="false" name="fotoColoborador" id="" class="noclass" src="img/perfil.png" alt="">
-            </div>
-            <div name="infoColaborador" id="" class="infoColaborador">
-                <div name="infoNomeColaborador" id="" class="infoNomeColaborador"><p>nome</p></div>
-                <div name="infoCargoColaborador" id="" class="infoCargoColaborador"><p>cargo</p></div>
-                <div name="infoSetorColaborador" id="" class="infoSetorColaborador"><p>setor</p></div>
-            </div>
-        </section>
+    <?php
+
+        $sql_code_aniversario = "SELECT
+                                    U.NOME AS NOME,
+                                    U.SOBRENOME AS SOBRENOME,
+                                    U.CARGO AS CARGO,
+                                    CONCAT(UCASE(SUBSTRING(D.NOME_DEPARTAMENTO, 1, 1)), LCASE(SUBSTRING(D.NOME_DEPARTAMENTO, 2))) AS SETOR
+                                FROM USUARIO U
+                                    JOIN DEPARTAMENTO D
+                                        ON D.CD_DEPARTAMENTO = U.CD_DEPARTAMENTO
+                                WHERE MONTH(U.DATA_NASCIMENTO) = MONTH(NOW())
+                                AND DAY(U.DATA_NASCIMENTO) = DAY(NOW())
+                                LIMIT 5";
+
+            $sql_query_aniversario = $conn->query($sql_code_aniversario) or die ("ERRO ao consultar! " . $conn->error);
+            while($dados = $sql_query_aniversario->fetch_assoc()) { ?>
+                <section name="perfilAniversariante" id="" class="perfilAniversariante">
+                    <div name="boxFotoColaboradores" id="" class="boxFotoColaboradores">
+                    <img draggable="false" name="fotoColoborador" id="" class="noclass" src="img/perfil.png" alt="">
+                </div>
+                <div name="infoColaborador" id="" class="infoColaborador">
+                <div name="infoNomeColaborador" id="" class="infoNomeColaborador"><p><?php echo $dados['NOME']." ".$dados['SOBRENOME']; ?></p></div>
+                <div name="infoCargoColaborador" id="" class="infoCargoColaborador"><p><?php echo $dados['CARGO']; ?></p></div>
+                <div name="infoSetorColaborador" id="" class="infoSetorColaborador"><p><?php echo $dados['SETOR']; ?></p></div>
+                </div>
+                </section>
+
+            <?php }
+        
+    ?>
     </div>
 </div>
 
