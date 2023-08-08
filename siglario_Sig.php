@@ -182,7 +182,7 @@
                         $pagina = 1;
                     }
 
-                $limite = 10;
+                $limite = 21;
                 $inicio = ($pagina * $limite) - $limite;
                 $pesquisa = '';
                 $registros = $conn->query($sql_code_siglario)->num_rows;
@@ -214,7 +214,7 @@
                         $pagina = 1;
                     }
 
-                $limite = 10;
+                $limite = 21;
                 $inicio = ($pagina * $limite) - $limite;
                 $pesquisa = $_GET['search_pesquisa'];
                 $sql_code_siglario .= " WHERE SIGLA LIKE '%$pesquisa%'";

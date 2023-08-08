@@ -399,7 +399,7 @@ div nav ul hr{
     align-items: center;
 }
 .boxPaginasAgenda{
-    min-width: 30%;
+    min-width: 10%;
     max-width: 40%;
     height: 40px;
     background-color: #F5F2EB;

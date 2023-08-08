@@ -292,7 +292,7 @@ div nav ul hr{
 /*---===boxsiglario===---*/
 .boxsiglario{
     width: 100%;
-    height: 500px;
+    height: 1000px;
     background-color: #F5F2EB;
     display: flex;
     flex-direction: column;
@@ -312,7 +312,7 @@ div nav ul hr{
 }
 /* header */
 .linhaHeader{
-    height: 8%;
+    height: 4%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -361,7 +361,7 @@ div nav ul hr{
 .linhaCorpo{
     background-color: #EAE2D8;
     color: #00524C;
-    height: 8%;
+    height: 4%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -412,7 +412,8 @@ div nav ul hr{
 
 /*-----===Paginas Agenda===-----*/
 .boxPaginasAgenda{
-    width: 30%;
+    min-width: 10%;
+    max-width: 70%;
     height: 40px;
     background-color: #F5F2EB;
     border: 2px solid #DEC4BB;
