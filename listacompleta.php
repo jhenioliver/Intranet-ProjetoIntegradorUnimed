@@ -1,3 +1,6 @@
+<?php
+    include("config.php");
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,14 +21,28 @@
         <div name="txtAniversarianteSoMes" id="" class="txtAniversarianteSoMes">
             <p>Aniversariantes do Mês</p>
         </div>
-<!-- ----------------------AQUI JHENIFFER------------------------ -->
-            <table class="tabelaAniversariantes">
+        <table class="tabelaAniversariantes">
+    <?php
+        $sql_code_aniversario = "SELECT 
+                                    U.NOME AS NOME,
+                                    U.SOBRENOME AS SOBRENOME,
+                                    CONCAT(UCASE(SUBSTRING(D.NOME_DEPARTAMENTO, 1, 1)), LCASE(SUBSTRING(D.NOME_DEPARTAMENTO, 2))) AS SETOR, 
+                                    DATE_FORMAT(U.DATA_NASCIMENTO, '%d-%m') AS DATA
+                                FROM USUARIO U
+                                    JOIN DEPARTAMENTO D
+                                        ON D.CD_DEPARTAMENTO = U.CD_DEPARTAMENTO
+                                WHERE MONTH(U.DATA_NASCIMENTO) = MONTH(NOW())
+                                ORDER BY U.NOME ASC";
+
+        $sql_query_aniversario = $conn->query($sql_code_aniversario) or die ("ERRO ao consultar! " . $conn->error);
+        while($dados = $sql_query_aniversario->fetch_assoc()) { ?>
                 <tr class="linhaTabelaAniversariantes">
-                    <th class="colunaDataAniversariantes">data</th>
-                    <th class="ColunaNomeAniversariantes">nome</th>
-                    <th class="ColunaSetorAniversariantes">setor</th>
+                    <th class="colunaDataAniversariantes"><?php echo $dados['DATA']; ?></th>
+                    <th class="ColunaNomeAniversariantes"><?php echo $dados['NOME']." ".$dados['SOBRENOME']; ?></th>
+                    <th class="ColunaSetorAniversariantes"><?php echo $dados['SETOR']; ?></th>
                 </tr>
-            </table>
+        <?php } ?>
+        </table>
     </section>
 <footer>
     <div name="footercenter" id="" class="footercenter">
