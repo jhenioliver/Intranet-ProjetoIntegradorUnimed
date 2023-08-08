@@ -211,6 +211,7 @@
                                         ON D.CD_DEPARTAMENTO = U.CD_DEPARTAMENTO
                                 WHERE MONTH(U.DATA_NASCIMENTO) = MONTH(NOW())
                                 AND DAY(U.DATA_NASCIMENTO) = DAY(NOW())
+                                ORDER BY RAND()
                                 LIMIT 5";
 
             $sql_query_aniversario = $conn->query($sql_code_aniversario) or die ("ERRO ao consultar! " . $conn->error);
