@@ -144,22 +144,22 @@
             <div name="pesquisarPorSentenças" id="" class="pesquisarPorSentenças">Pesquisar por Siglas:</div>
             <input name="searchSentenças" id="searchSentenças" class="searchSentenças" type="search" value="<?php if(isset($_GET['search_pesquisa'])) echo $_GET['search_pesquisa']; ?>" placeholder="🔍Buscar">
         </div>
+        </section>
         <script>
-                        var search_pesquisa = document.getElementById('searchSentenças');
+            var search_pesquisa = document.getElementById('searchSentenças');
 
-                        search_pesquisa.addEventListener("keydown", function(event) {
-                            if (event.key === "Enter") 
-                            {
-                                searchPesquisa();
-                            }
-                        });
+            search_pesquisa.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") 
+                {
+                    searchPesquisa();
+                }
+            });
 
-                        function searchPesquisa()
-                            {
-                                window.location = 'siglario_Sig.php?search_pesquisa='+search_pesquisa.value+'&pagina=1';
-                            }
-                     </script>
-    </section>
+            function searchPesquisa()
+                {
+                    window.location = 'siglario_Sig.php?search_pesquisa='+search_pesquisa.value+'&pagina=1';
+                }
+        </script>
 <!-- tabela siglario -->
     <section name="boxsiglario" id="" class="boxsiglario">
         <table class="tabelaSiglas">
