@@ -1,3 +1,3 @@
-# projeto_integrador
+# Intranet Unimed - Projeto Integrador Senac
 
-Projeto elaborado com equipe, para o curso de Desenvolvimento de Software da instituição Senac Chapecó.
+Projeto elaborado em equipe, para o **Projeto Integrador** do curso de **Desenvolvimento de Softwares** da instituição **Senac** Chapecó juntamente com a **Unimed** Chapecó.
